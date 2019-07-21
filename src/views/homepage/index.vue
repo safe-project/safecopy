@@ -1,6 +1,5 @@
 <template>
   <div class="app-container">
-    <!-- <bread-crumb :page="$options.const.pageName"></bread-crumb> -->
     <el-table 
       :data="dataList" 
       highlight-current-row
@@ -13,7 +12,7 @@
       <el-table-column label="司机姓名" prop="driverName" align="center" min-width="120"></el-table-column>
       <el-table-column label="司机电话" prop="driverNum" align="center" min-width="120"></el-table-column>
       <el-table-column label="订单开始时间" prop="startTime" align="center" min-width="160"></el-table-column>
-      <el-table-column label="订单预警时间" prop="warningTime" align="center" min-width="160"></el-table-column>
+      <el-table-column label="预警时间" prop="warningTime" align="center" min-width="160"></el-table-column>
       <el-table-column label="预警原因" prop="WarningReason" align="center" min-width="160">
         <template slot-scope="scope">
             <el-tag
@@ -97,7 +96,7 @@ export default {
   methods : {
       getRowClass({ row, column, rowIndex, columnIndex }) {
         if (rowIndex === 0) {
-            return 'background:#e5e5e5'
+          return 'background:#e5e5e5'
         }
       },
       handleSizeChange(val) {

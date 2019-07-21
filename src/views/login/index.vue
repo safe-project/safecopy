@@ -265,12 +265,13 @@ $light_gray:#eee;
       height:53px;
       line-height:53px;
       font-size: 24px;
-      padding-left:158px;
+      padding-left:140px;
       color: $light_gray;
       margin: 0px auto 35px auto;
       text-align: center;
       font-weight: bold;
       background: url(../../assets/logo/logo.png) no-repeat left center;
+      
     }
   }
 

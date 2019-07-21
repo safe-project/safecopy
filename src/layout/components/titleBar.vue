@@ -1,7 +1,7 @@
 <template>
     <div class="titleBar clearfloat">
         <div class="left-logo">
-          <i class="logo"></i><span class="title">如祺出行-安全管理平台</span>
+          <i class="logo"></i><span class="title" style='font-size: 16px;'>如祺出行-安全管理平台</span>
         </div>
         <div class="right-menu">
 	      	<el-dropdown>
@@ -76,18 +76,18 @@
         text-align: center;
         .logo{
           display: inline-block;
-          width: 36px;
-          height: 36px;
+          width: 30px;
+          height: 30px;
           position: absolute;
           top:10px;
-          left:10px;
+          left:30px;
           background: url(../../assets/logo/logo.png) no-repeat left center;
         }
         .title {
           display: inline-block;
           line-height:50px;
           font-size: 22px;
-          margin-left:40px;
+          margin-left:10px;
           color:#fff;
           background-color:#1e2a44;
         }
