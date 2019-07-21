@@ -67,6 +67,7 @@
     	background-color: #1e2a44;
     	position: fixed;
     	z-index:2000;
+        top: 0;
     	.right-menu {
     		width: 100px;
     		height: 50px;

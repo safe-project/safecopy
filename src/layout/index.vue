@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <!-- <titleBar></titleBar> -->
+    <titleBar></titleBar>
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
     <div class="main-container">
@@ -58,7 +58,7 @@ export default {
 
   .app-wrapper {
     @include clearfix;
-    position: fixed;
+    position: relative;
     margin-top: 50px;
     height: 100%;
     width: 100%;
