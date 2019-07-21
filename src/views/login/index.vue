@@ -40,7 +40,7 @@
           @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          <i class="el-icon-view"></i>
         </span>
       </el-form-item>
       <el-row :gutter="20" class="tips">
@@ -62,7 +62,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-
+import Cookies from 'js-cookie'
 export default {
   name: 'Login',
   data() {
@@ -82,8 +82,8 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '111111'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -116,18 +116,25 @@ export default {
     },
     handleReset(){
       console.log("重置");
+      this.loginForm.username = ''
+      this.loginForm.password = ''
+      
     },
-     handleLogin() {
+    handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
             console.log('登录成功');
+            if (this.checked) {
+              this.storeCookie();
+            }
+            
             //获取权限
-            this.$store.dispatch('user/getRoles').then(() => {
-            }).catch(()=>{
+            // this.$store.dispatch('user/getRoles').then(() => {
+            // }).catch(()=>{
 
-            })
+            // })
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
@@ -139,6 +146,18 @@ export default {
           return false
         }
       })
+    },
+    // 存储cookie
+    storeCookie(){
+      console.log('存储cookie了');
+      Cookies.set('username', this.loginForm.username,{ expires:7, path: '' });
+      Cookies.set('password', this.loginForm.password,{ expires: 7, path: '' });
+    }
+  },
+  created(){
+    if (Cookies.get('username')&&Cookies.get('password')) {
+      this.loginForm.username = Cookies.get('username')
+      this.loginForm.password = Cookies.get('password')
     }
   }
 }
@@ -245,11 +264,11 @@ $light_gray:#eee;
     .title {
       height:53px;
       line-height:53px;
-      font-size: 38px;
+      font-size: 24px;
       padding-left:158px;
       color: $light_gray;
       margin: 0px auto 35px auto;
-      text-align: right;
+      text-align: center;
       font-weight: bold;
       background: url(../../assets/logo/logo.png) no-repeat left center;
     }
