@@ -1,0 +1,11 @@
+{
+  "state": 0,
+  "msg": "Success",
+  "data": [
+    {
+      "value": 100000,
+      "label": "北京城区",
+      "children": []
+    }
+  ]
+}
