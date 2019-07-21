@@ -91,7 +91,7 @@
           height: 30px;
           position: absolute;
 
-          top:6px;
+          top:10px;
           left:28px;
           background: url(../../assets/logo/icon.png) no-repeat center center;
           background-size:cover;
