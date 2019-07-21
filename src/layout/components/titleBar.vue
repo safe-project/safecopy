@@ -4,18 +4,28 @@
           <i class="logo"></i><span class="title">如祺出行-安全管理平台</span>
         </div>
         <div class="right-menu">
-	      	<el-dropdown>
+          <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <img src="../../assets/logo/fengche.png" class="nickNameImg">
+            <span :title="nickName" class="nickName">{{nickName}}</span>
+            <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown" style="margin-top:10px ">
+            <el-dropdown-item @click.native="logout">退出登陆</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+
+	      	<!-- <el-dropdown>
             <span class="el-dropdown-link">
-              <img src="">
-              <i>lipeng</i>
-              <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
+              <img src="" class="">
+              <span class="dropdown">超级管理员</span>
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
               <span style="display:block;" @click="logout">退出</span>
               </el-dropdown-item>
             </el-dropdown-menu>
-          </el-dropdown>
+          </el-dropdown> -->
         </div>
     </div>
 </template>
@@ -28,6 +38,7 @@
         name: 'titleBar',
         data(){
             return {
+              nickName:'超级管理员',
                 
             }
         },
@@ -72,36 +83,62 @@
       top: 0;
       .left-logo{
         height:50px;
-        width: 300px;
+        width: 30%;
         text-align: center;
         .logo{
           display: inline-block;
           width: 36px;
           height: 36px;
           position: absolute;
-          top:10px;
-          left:10px;
-          background: url(../../assets/logo/logo.png) no-repeat left center;
+          top:6px;
+          left:28px;
+          background: url(../../assets/logo/icon.png) no-repeat center center;
+          background-size:cover;
         }
         .title {
           display: inline-block;
           line-height:50px;
           font-size: 22px;
-          margin-left:40px;
           color:#fff;
           background-color:#1e2a44;
         }
       }
       .right-menu {
-        width: 100px;
-        height: 50px;
-        border: 1px solid red;
-          position: absolute;
-          top:10px;
-          right:10px;
-        margin-right: 20px;
-        height: 100%;
+        width: 15%;
+        height:100%;
+        position: absolute;
+        top:0px;
+        right:0px;
         cursor: pointer;
+        .nickName{
+          display: inline-block;
+          color: #fff;
+          text-align: right;
+          margin-left: 50px;
+          vertical-align: middle;
+          width: 80px;
+          height: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .nickNameImg{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          position: absolute;
+          left: 24px;
+          top: 10px;
+          animation:nickNameImg 4s linear 0s infinite;
+        }
+        @keyframes nickNameImg{
+          0%{
+            transform:rotate(0deg);
+          }
+          100%{
+            transform:rotate(-360deg);
+          }
+        }
 			i{
 				color: #fff;
 			}
