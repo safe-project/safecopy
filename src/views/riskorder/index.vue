@@ -12,9 +12,11 @@
     </el-row>
     <el-table 
       :data="dataList" 
+      highlight-current-row
       header-align="center" 
-      style="width: 99%;" 
-      element-loading-text="拼命加载中" stripe >
+      style="width: 99%;" stripe
+      :header-cell-style="getRowClass"
+      element-loading-text="拼命加载中">
       <el-table-column label="订单ID" prop="orderID" align="center" min-width="120"></el-table-column>
       <el-table-column label="车牌号" prop="carNum" align="center" min-width="120"></el-table-column>
       <el-table-column label="司机姓名" prop="driverName" align="center" min-width="120"></el-table-column>
@@ -114,6 +116,11 @@
       }
     },
     methods : {
+      getRowClass({ row, column, rowIndex, columnIndex }) {
+        if (rowIndex === 0) {
+            return 'background:#e5e5e5'
+        }
+      },
       handleSizeChange(val) {
         this.pageSize = val;
         this.query();
