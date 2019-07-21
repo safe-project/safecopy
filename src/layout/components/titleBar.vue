@@ -1,20 +1,22 @@
 <template>
     <div class="titleBar clearfloat">
-        <div class="wrapLogo"></div>
+        <div class="left-logo">
+          <i class="logo"></i><span class="title">如祺出行-安全管理平台</span>
+        </div>
         <div class="right-menu">
 	      	<el-dropdown>
-			  <span class="el-dropdown-link">
-			    <img src="">
-			    <i>lipeng</i>
-			    <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
-			  </span>
-			  <el-dropdown-menu slot="dropdown">
-			    <el-dropdown-item>
-					<span style="display:block;" @click="logout">退出</span>
-			    </el-dropdown-item>
-			  </el-dropdown-menu>
-			</el-dropdown>
-	    </div>
+            <span class="el-dropdown-link">
+              <img src="">
+              <i>lipeng</i>
+              <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+              <span style="display:block;" @click="logout">退出</span>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
     </div>
 </template>
 
@@ -61,21 +63,45 @@
 
 <style scoped lang="less">
     .titleBar{
-    	height: 50px;
-    	line-height: 50px;
-    	width: 100%;
-    	background-color: #1e2a44;
-    	position: fixed;
-    	z-index:2000;
-        top: 0;
-    	.right-menu {
-    		width: 100px;
-    		height: 50px;
-    		border: 1px solid red;
-		    float: right;
-		    margin-right: 20px;
-		    height: 100%;
-		    cursor: pointer;
+      height: 50px;
+      line-height: 50px;
+      width: 100%;
+      background-color: #1e2a44;
+      position: fixed;
+      z-index:2000;
+      top: 0;
+      .left-logo{
+        height:50px;
+        width: 300px;
+        text-align: center;
+        .logo{
+          display: inline-block;
+          width: 36px;
+          height: 36px;
+          position: absolute;
+          top:10px;
+          left:10px;
+          background: url(../../assets/logo/logo.png) no-repeat left center;
+        }
+        .title {
+          display: inline-block;
+          line-height:50px;
+          font-size: 22px;
+          margin-left:40px;
+          color:#fff;
+          background-color:#1e2a44;
+        }
+      }
+      .right-menu {
+        width: 100px;
+        height: 50px;
+        border: 1px solid red;
+          position: absolute;
+          top:10px;
+          right:10px;
+        margin-right: 20px;
+        height: 100%;
+        cursor: pointer;
 			i{
 				color: #fff;
 			}
