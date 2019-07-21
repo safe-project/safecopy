@@ -83,7 +83,7 @@
       top: 0;
       .left-logo{
         height:50px;
-        width: 30%;
+        width: 25%;
         text-align: center;
         .logo{
           display: inline-block;
