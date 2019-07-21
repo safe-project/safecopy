@@ -58,14 +58,14 @@ const actions = {
         }
         console.log('返回来的roles',data.data.data.roles);
         const  roles = data.data.data.roles;
-
+        // const { roles, name, avatar, introduction } = data
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
           reject('getInfo: roles must be a non-null array!')
         }
 
         commit('SET_ROLES', roles)
-        resolve(data)
+        resolve(roles)
       }).catch(error => {
         reject(error)
       })
@@ -98,6 +98,7 @@ const actions = {
       logout(state.token).then((response) => {
         console.log('注销成功的response',response);
         commit('SET_TOKEN', '')
+        commit('SET_ROLES', '')
         removeToken()
         resetRouter()
         resolve()

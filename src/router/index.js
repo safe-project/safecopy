@@ -47,7 +47,6 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/homepage',
-    roles:'110',
     children: [{
       path: 'homepage',
       name: 'Homepage',
@@ -78,32 +77,8 @@ export const constantRoutes = [
   //   ]
   // },
 
-  {
-    path: '/riskorder',
-    component: Layout,
-    roles:'120',
-    children: [
-      {
-        path: 'index',
-        name: 'Riskorder',
-        component: () => import('@/views/riskorder/index'),
-        meta: { title: '风险订单预警', icon: 'el-icon-warning' }
-      }
-    ]
-  },
-  {
-    path: '/historyorder',
-    component: Layout,
-    roles:'130',
-    children: [
-      {
-        path: 'index',
-        name: 'Historyorder',
-        component: () => import('@/views/historyorder/index'),
-        meta: { title: '历史订单查询', icon: 'el-icon-time' }
-      }
-    ]
-  },
+  
+  
   // {
   //   path: '/nested',
   //   component: Layout,
@@ -174,8 +149,41 @@ export const constantRoutes = [
   // },
 
   // 404 page must be placed at the end !!!
+  // { path: '*', redirect: '/404', hidden: true }
+]
+
+
+export const asyncRoutes = [
+{
+    path: '/riskorder',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Riskorder',
+        component: () => import('@/views/riskorder/index'),
+        meta: { title: '风险订单预警', icon: 'el-icon-warning',roles: ['120']  }
+      }
+    ]
+  },
+  {
+    path: '/historyorder',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Historyorder',
+        component: () => import('@/views/historyorder/index'),
+        meta: { title: '历史订单查询', icon: 'el-icon-time',roles: ['130'] }
+      }
+    ]
+  },
+
+  // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
@@ -185,6 +193,14 @@ const createRouter = () => new Router({
 
 const router = createRouter()
 
+
+// router.$addRoutes = (params) => {
+//   router.matcher = new Router({mode: 'history'}).matcher;
+//   router.addRoutes(params)
+// }
+// router.$addRoutes(router.options.routes);
+
+
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
@@ -192,3 +208,5 @@ export function resetRouter() {
 }
 
 export default router
+
+
