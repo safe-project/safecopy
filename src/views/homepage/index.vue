@@ -82,6 +82,9 @@
           </template>
         </el-table-column>
       </el-table>
+
+      <!-- 分页组件 -->
+      <pagination :total="total"></pagination>
     </div>
 
     <orderDetailDialog 
@@ -92,7 +95,8 @@
       :safeInfo="safeInfo" 
       :routeInfo="routeInfo" 
       :orderID="orderID" 
-      @transfer="changeDialogVisible"></orderDetailDialog>
+      @transfer="changeDialogVisible">
+    </orderDetailDialog>
 
 
     <!-- <div class="dashboard-text">name: {{ name }}</div>
@@ -105,6 +109,7 @@ import { mapGetters } from 'vuex'
 import { getOrderList} from '@/api/homepage'
 import { getOrderDetail} from '@/api/orderDetail'
 import orderDetailDialog from '@/views/orderDetail/index.vue';
+import pagination from '@/views/pagination/index.vue';
 export default {
   name: 'Homepage',
   computed: {
@@ -123,12 +128,16 @@ export default {
       timeline:[],
       safeInfo:{},
       routeInfo:[],
-      orderID:""
+      orderID:"",
+      /*************************/
+      total:0,
+      page:1,
+      limit:10,
       /*************************/
     }
   },
   /*************************/
-  components:{ orderDetailDialog },
+  components:{ orderDetailDialog,pagination },
   /*************************/
   methods : {
     getRowClass({ row, column, rowIndex, columnIndex }) {
@@ -139,6 +148,7 @@ export default {
     getOrderList() {
       getOrderList()
         .then(response => {
+          this.total = response.data.data.data.total;
           this.orderListData = response.data.data.data.dataList;
         })
         .catch(error => {
@@ -184,9 +194,18 @@ export default {
         });
     },
     /*************************/
+    handleCurrentChange(val) {
+      this.page = val;
+      this.getOrderList(this.page, this.limit);
+    },
+    handleSizeChange(val) {
+      this.limit = val;
+      this.getOrderList(this.page, this.limit);
+    },
+    /*************************/
   },
   created(){
-    this.getOrderList();
+    this.getOrderList(this.page, this.limit);
   }
 }
 </script>
