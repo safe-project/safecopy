@@ -1,7 +1,7 @@
 <template>
     <div class="titleBar clearfloat">
         <div class="left-logo">
-          <i class="logo"></i><span class="title" style='font-size: 16px;'>如祺出行-安全管理平台</span>
+          <span class="title"><i class="logo"></i>如祺出行-安全管理平台</span>
         </div>
         <div class="right-menu">
           <el-dropdown trigger="click">
@@ -83,27 +83,26 @@
       top: 0;
       .left-logo{
         height:50px;
-        width: 25%;
+        width: 300px;
         text-align: center;
-        .logo{
-          display: inline-block;
-          width: 30px;
-          height: 30px;
-          position: absolute;
-
-          top:10px;
-          left:60px;
-          background: url(../../assets/logo/icon.png) no-repeat center center;
-          background-size:cover;
-
-        }
         .title {
           display: inline-block;
           line-height:50px;
-          font-size: 22px;
-
+          font-size: 16px;
+          position: relative;
           color:#fff;
           background-color:#1e2a44;
+          .logo{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top:10px;
+            left:-35px;
+            background: url(../../assets/logo/icon.png) no-repeat center center;
+            background-size:cover;
+
+        }
         }
       }
       .right-menu {

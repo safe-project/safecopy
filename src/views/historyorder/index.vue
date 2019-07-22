@@ -8,11 +8,11 @@
           <span>订单以及司乘信息</span>
         </el-col>
         <el-col :span="2">
-          <el-form-item label="订单ID:" prop="orderId" :showMessage='false' ></el-form-item>
+          <el-form-item label="订 单 ID :" prop="orderId" :showMessage='false' ></el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item prop="orderId">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.orderId" auto-complete="off" placeholder="输入文本"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.orderId" auto-complete="off" placeholder="输入文本"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -20,15 +20,15 @@
         </el-col>
         <el-col :span="3">
           <el-form-item prop="driverTel">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.driverTel" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.driverTel" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
-          <el-form-item label="司机ID:" prop="driverId" :showMessage='false'></el-form-item>
+          <el-form-item label="司 机 ID :" prop="driverId" :showMessage='false'></el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item prop="driverId">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.driverId" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.driverId" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -36,17 +36,17 @@
         </el-col>
         <el-col :span="3">
           <el-form-item prop="driverIMEI">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.driverIMEI" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.driverIMEI" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row class="addMsgFormRow">
         <el-col :span="2">
-          <el-form-item label="车牌号:" prop="carNumber" :showMessage='false' ></el-form-item>
+          <el-form-item label="车 牌 号 :" prop="carNumber" :showMessage='false' ></el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item prop="carNumber">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.carNumber" auto-complete="off" placeholder="输入文本"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.carNumber" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -54,15 +54,15 @@
         </el-col>
         <el-col :span="3">
           <el-form-item prop="passengerTel">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.passengerTel" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.passengerTel" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
-          <el-form-item label="乘客ID:" prop="passengerId" :showMessage='false'></el-form-item>
+          <el-form-item label="乘 客 ID:" prop="passengerId" :showMessage='false'></el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item prop="passengerId">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.passengerId" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.passengerId" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -70,7 +70,7 @@
         </el-col>
         <el-col :span="3">
           <el-form-item prop="passengerIMEI">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.passengerIMEI" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.passengerIMEI" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -80,15 +80,15 @@
         </el-col>
         <el-col :span="3">
           <el-form-item prop="onAddress">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.onAddress" auto-complete="off" placeholder="输入文本"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.onAddress" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
-          <el-form-item prop="offAddress" label="下车地点:" :showMessage='false'></el-form-item>
+          <el-form-item prop="offAddress" label="下车地点 :" :showMessage='false'></el-form-item>
         </el-col>
         <el-col :span="3">
           <el-form-item prop="offAddress">
-            <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.offAddress" auto-complete="off"></el-input>
+            <el-input size="mini" type="text" v-model="addMsgForm.offAddress" auto-complete="off"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -98,10 +98,8 @@
           <el-form-item prop="startTime">
             <el-date-picker
               v-model="addMsgForm.startTime"
-              type="datetime"  size="mini"
-              placeholder="选择日期时间">
+              type="datetime"  size="mini">
             </el-date-picker>
-            <!-- <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.startTime" auto-complete="off"></el-input> -->
           </el-form-item>
         </el-col>
         <el-col :span="2" :offset='1'>
@@ -111,8 +109,7 @@
           <el-form-item prop="endTime">
             <el-date-picker
               v-model="addMsgForm.endTime"
-              type="datetime"  size="mini"
-              placeholder="选择日期时间">
+              type="datetime"  size="mini">
             </el-date-picker>
             <!-- <el-input size="mini" prefix-icon="el-icon-search" type="text" v-model="addMsgForm.endTime" auto-complete="off"></el-input> -->
           </el-form-item>
@@ -337,6 +334,9 @@
 <style>
   .addMsgForm .el-date-editor.el-input, .el-date-editor.el-input__inner{
     width:148px;
+  }
+  .addMsgForm .el-col-2{
+    width: 7.33%;
   }
   .addMsgForm .rowTitle{
     font-size: 14px;
