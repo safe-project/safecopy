@@ -86,6 +86,19 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- 分页组件 -->
+    <div class="pagination clearfloat">
+      <el-pagination
+        background
+        :total="total"
+        :current-page="currentPage"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :page-sizes="[10, 20, 50, 100, 1000]"
+        layout="total, sizes, prev, pager, next, jumper"
+        :page-size="limit">
+      </el-pagination>
+    </div>
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
       :DetailsPageActive="DetailsPageActive"
@@ -134,7 +147,12 @@
         timeline:[],
         safeInfo:{},
         routeInfo:[],
-        orderID:""
+        orderID:"",
+        currentPage:1,
+        total:0,
+        page:1,
+        limit:10,
+        /*************************/
       }
     },
     computed:{
@@ -152,12 +170,27 @@
       },
       srearch(){
         // 调用查询接口，跟本页的获取历史订单接口一致即可
-        this.getHistoryOrderList();
+        this.getHistoryOrderList(this.form.orderId,
+          this.form.driverPhone,
+          this.form.driverId,
+          this.form.driverIMEI,
+          this.form.carNum,
+          this.form.passengerPhone,
+          this.form.passengerId,
+          this.form.passengerIMEI,
+          this.form.onAddress,
+          this.form.offAddress,
+          this.form.startTime,
+          this.form.endTime,
+          this.form.activeIdArr,
+          1,
+          this.limit);
       },
       /*API：很多参数*/
-      getHistoryOrderList() {
-        getHistoryOrderList()
+      getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr,page,limit) {
+        getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr)
           .then(response => {
+            this.total = response.data.data.data.total;
             this.historyOrderListData = response.data.data.data.dataList;
           })
           .catch(error => {
@@ -175,7 +208,7 @@
         console.log(scope.row.orderID);
         this.orderID = scope.row.orderID;
         //获取订单详情
-        this.getOrderDetail();
+        this.getOrderDetail(scope.row.orderID);
       },
       // 详情dialog关闭的时候触发的操作
       changeDialogVisible(){
@@ -186,8 +219,8 @@
         this.routeInfo = [];
       },
       // 获取订单详情接口
-      getOrderDetail() {
-        getOrderDetail()
+      getOrderDetail(orderID) {
+        getOrderDetail(orderID)
           .then(response => {
             this.driverInfo = response.data.data.data.driverInfo;
             this.timeline = response.data.data.data.timeline;
@@ -203,9 +236,61 @@
           });
       },
       /*************************/
+      /*************************/
+      handleCurrentChange(val) {
+        this.page = val;
+        this.getHistoryOrderList(this.form.orderId,
+          this.form.driverPhone,
+          this.form.driverId,
+          this.form.driverIMEI,
+          this.form.carNum,
+          this.form.passengerPhone,
+          this.form.passengerId,
+          this.form.passengerIMEI,
+          this.form.onAddress,
+          this.form.offAddress,
+          this.form.startTime,
+          this.form.endTime,
+          this.form.activeIdArr,
+          this.page,
+          this.limit);
+      },
+      handleSizeChange(val) {
+        this.limit = val;
+        this.getHistoryOrderList(this.form.orderId,
+          this.form.driverPhone,
+          this.form.driverId,
+          this.form.driverIMEI,
+          this.form.carNum,
+          this.form.passengerPhone,
+          this.form.passengerId,
+          this.form.passengerIMEI,
+          this.form.onAddress,
+          this.form.offAddress,
+          this.form.startTime,
+          this.form.endTime,
+          this.form.activeIdArr,
+          this.page,
+          this.limit);
+      },
+      /*************************/
     },
     created(){
-      this.getHistoryOrderList()
+      this.getHistoryOrderList(this.form.orderId,
+          this.form.driverPhone,
+          this.form.driverId,
+          this.form.driverIMEI,
+          this.form.carNum,
+          this.form.passengerPhone,
+          this.form.passengerId,
+          this.form.passengerIMEI,
+          this.form.onAddress,
+          this.form.offAddress,
+          this.form.startTime,
+          this.form.endTime,
+          this.form.activeIdArr,
+          this.page,
+          this.limit);
     },
     mounted(){
       
@@ -217,11 +302,13 @@
 </script>
 <style lang="less">
   .historyOrder{
-    .el-input .el-input__inner{
-      width: 200px;
-      height: 30px;
-      line-height: 30px;
-      margin-right: 10px;
+    .el-form{
+      .el-input .el-input__inner{
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 10px;
+      }
     }
     .el-form-item {
       margin-bottom: 2px;
@@ -240,6 +327,13 @@
         padding: 0;
         height: 40px;
         font-size: 12px;
+    }
+    .pagination{
+      margin-top: 6px;
+      margin-right: 20px;
+      .el-pagination{
+        float:right;
+      }
     }
   }
   
