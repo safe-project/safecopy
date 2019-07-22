@@ -191,6 +191,7 @@
     .pagination{
       margin-top: 6px;
       margin-right: 20px;
+      margin-bottom: 50px;
       .el-pagination{
         float:right;
       }
