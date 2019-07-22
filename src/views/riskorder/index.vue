@@ -35,7 +35,19 @@
         </template>
       </el-table-column>
     </el-table>
-
+    <!-- 分页组件 -->
+    <div class="pagination clearfloat">
+      <el-pagination
+        background
+        :total="total"
+        :current-page="currentPage"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :page-sizes="[10, 20, 50, 100, 1000]"
+        layout="total, sizes, prev, pager, next, jumper"
+        :page-size="limit">
+      </el-pagination>
+    </div>
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
       :DetailsPageActive="DetailsPageActive"
@@ -58,14 +70,18 @@
     data(){
       return {
         riskOrderListData:[],//数据
-
+        stateId:"",
         dialogVisible:false,
         DetailsPageActive:3,
         driverInfo:{},
         timeline:[],
         safeInfo:{},
         routeInfo:[],
-        orderID:""
+        orderID:"",
+        currentPage:1,
+        total:0,
+        page:1,
+        limit:10,
       }
     },
     computed:{
@@ -81,9 +97,10 @@
           return 'background:#e5e5e5'
         }
       },
-      getRiskOrderList() {
-        getRiskOrderList()
+      getRiskOrderList(id,page,limit) {
+        getRiskOrderList(id,page,limit)
           .then(response => {
+            this.total = response.data.data.data.total;
             this.riskOrderListData = response.data.data.data.dataList;
           })
           .catch(error => {
@@ -95,7 +112,8 @@
           });
       },
       handleClick(id) {
-        this.getRiskOrderList(id);
+        this.stateId = id;
+        this.getRiskOrderList(id,1,this.limit);
       },
 
       /*************************/
@@ -105,7 +123,7 @@
         console.log(scope.row.orderID);
         this.orderID = scope.row.orderID;
         //获取订单详情
-        this.getOrderDetail();
+        this.getOrderDetail(scope.row.orderID);
       },
       // 详情dialog关闭的时候触发的操作
       changeDialogVisible(){
@@ -116,8 +134,8 @@
         this.routeInfo = [];
       },
       // 获取订单详情接口
-      getOrderDetail() {
-        getOrderDetail()
+      getOrderDetail(orderID) {
+        getOrderDetail(orderID)
           .then(response => {
             this.driverInfo = response.data.data.data.driverInfo;
             this.timeline = response.data.data.data.timeline;
@@ -132,10 +150,18 @@
             });
           });
       },
+      handleCurrentChange(val) {
+        this.page = val;
+        this.getRiskOrderList(this.stateId,this.page, this.limit);
+      },
+      handleSizeChange(val) {
+        this.limit = val;
+        this.getRiskOrderList(this.stateId,this.page, this.limit);
+      },
       /*************************/
     },
     created(){
-      this.getRiskOrderList(0);
+      this.getRiskOrderList(0,1,this.limit);
     },
     mounted(){
       
@@ -161,6 +187,14 @@
         padding: 0;
         height: 40px;
         font-size: 12px;
+    }
+    .pagination{
+      margin-top: 6px;
+      margin-right: 20px;
+      margin-bottom: 50px;
+      .el-pagination{
+        float:right;
+      }
     }
   }
 </style>

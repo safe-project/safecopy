@@ -84,7 +84,18 @@
       </el-table>
 
       <!-- 分页组件 -->
-      <pagination :total="total"></pagination>
+      <div class="pagination clearfloat">
+        <el-pagination
+          background
+          :total="total"
+          :current-page="currentPage"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :page-sizes="[10, 20, 50, 100, 1000]"
+          layout="total, sizes, prev, pager, next, jumper"
+          :page-size="limit">
+        </el-pagination>
+      </div>
     </div>
 
     <orderDetailDialog 
@@ -105,11 +116,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { getOrderList} from '@/api/homepage'
-import { getOrderDetail} from '@/api/orderDetail'
+import { mapGetters } from 'vuex';
+import { getOrderList} from '@/api/homepage';
+import { getOrderDetail} from '@/api/orderDetail';
 import orderDetailDialog from '@/views/orderDetail/index.vue';
-import pagination from '@/views/pagination/index.vue';
 export default {
   name: 'Homepage',
   computed: {
@@ -130,6 +140,7 @@ export default {
       routeInfo:[],
       orderID:"",
       /*************************/
+      currentPage:1,
       total:0,
       page:1,
       limit:10,
@@ -137,7 +148,7 @@ export default {
     }
   },
   /*************************/
-  components:{ orderDetailDialog,pagination },
+  components:{ orderDetailDialog },
   /*************************/
   methods : {
     getRowClass({ row, column, rowIndex, columnIndex }) {
@@ -145,8 +156,8 @@ export default {
         return 'background:#e5e5e5'
       }
     },
-    getOrderList() {
-      getOrderList()
+    getOrderList(page,limit) {
+      getOrderList(page,limit)
         .then(response => {
           this.total = response.data.data.data.total;
           this.orderListData = response.data.data.data.dataList;
@@ -166,7 +177,7 @@ export default {
       console.log(scope.row.orderID);
       this.orderID = scope.row.orderID;
       //获取订单详情
-      this.getOrderDetail();
+      this.getOrderDetail(scope.row.orderID);
     },
     // 详情dialog关闭的时候触发的操作
     changeDialogVisible(){
@@ -177,8 +188,8 @@ export default {
       this.routeInfo = [];
     },
     // 获取订单详情接口
-    getOrderDetail() {
-      getOrderDetail()
+    getOrderDetail(orderID) {
+      getOrderDetail(orderID)
         .then(response => {
           this.driverInfo = response.data.data.data.driverInfo;
           this.timeline = response.data.data.data.timeline;
@@ -223,10 +234,19 @@ export default {
       height: 40px;
       font-size: 12px;
   }
+  .pagination{
+    margin-top: 6px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    .el-pagination{
+      float:right;
+    }
+  }
 }
 
   .el-button--text:focus, .el-button--text:hover{
     color: #4278EF;
     font-weight: bolder;
   }
+
 </style>
