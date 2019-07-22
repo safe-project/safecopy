@@ -142,7 +142,7 @@
         ],
         historyOrderListData:[],
         dialogVisible:false,
-        DetailsPageActive:3,
+        DetailsPageActive:1,
         driverInfo:{},
         timeline:[],
         safeInfo:{},

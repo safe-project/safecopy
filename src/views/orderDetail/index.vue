@@ -26,18 +26,18 @@
 		  			</div>
 		  			<div class="timeline public" style="margin-bottom:0px">
 		  				<div class="title"><strong>业务时间轴</strong></div>
-					    <div style="width: 100%; height: 350px; display: table;margin-top: 10px;">
+					    <div style="width: 100%;  display: table;margin-top: 10px;">
 					      <div class="DetailsPage-lt">
 					        <div class="delate-time"
-					          :style="{'top': `${index*((350-46)/(timeline.length-1))+4}px`}"
-					          v-for="(item, index) in timeline"
+					          :style="{'top': `${index*(80)+4}px`}"
+					          v-for="(item, index) in timeline1"
 					          :key="index"
 					        >{{item.D_time}}</div>
 					      </div>
 					      <div class="DetailsPage-rt">
 					        <el-steps direction="vertical" :active="DetailsPageActive" :space="80">
 					          <el-step
-					          v-for="(item, index) in timeline"
+					          v-for="(item, index) in timeline1"
 					          :key="index"
 					          :title="item.D_title"
 					          :description="item.D_content==='null'?'':item.D_content"
@@ -160,7 +160,30 @@
         detailDialogVisible:false,
         title:"",
         textarea:"",
-        riskDialogVisible:false,
+		riskDialogVisible:false,
+		"timeline1":[
+        {
+        "D_title":"乘客下单",
+        "D_content":"广州市天河区广汽中心南门  GPS: 23.1009.113.2154",
+        "D_time":"2019.07.11 19:31:42"
+      },{
+        "D_title":"司机接单",
+        "D_content":"广州市天河区天汇广场IGC-西门  GPS: 23.1009.113.4321",
+        "D_time":"2019.07.15 19:31:42"
+      },{
+        "D_title":"乘客上车",
+        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+        "D_time":"2019.07.15 19:35:43"
+      },{
+        "D_title":"司机一键报警",
+        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+        "D_time":"2019.07.15 19:35:43"
+      },{
+        "D_title":"订单结束",
+        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+        "D_time":"2019.07.15 19:56:32"
+      }
+    ],
       }
     },
     props:{
