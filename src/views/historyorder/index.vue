@@ -151,24 +151,51 @@
       <el-table-column label="下车地点" prop="offAddress" align="center" min-width="120"></el-table-column>
       <el-table-column label="订单详情" width="100">
         <template slot-scope="scope">
-          <el-button type="text">查看</el-button>
+          <el-tooltip content="编辑" placement="top" effect="light">
+                  <el-button type="text" @click='handleEdit(scope.row)'>查看</el-button>
+                </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
-      <!-- <el-col :span="24" class="toolbar pageall">
-        <pagination :total="total" @handleSizeChange="handleSizeChange" @handleCurrentChange="handleCurrentChange"></pagination>
-      </el-col> -->
+    <DetailsPage  
+      :DetailsPageVisible="DetailsPageVisible"
+      :DetailsPageActive="DetailsPageActive"
+      :DetailsPageDataList="DetailsPageDataList" >
+    </DetailsPage>
   </div>
 </template>
 
 <script>
-  // import pagination from "@/common/pagination";
-  // import breadCrumb from 'Components/breadcrumb';
+  import DetailsPage from '../../components/DetailsPage';
   export default {
-    // components: {pagination,breadCrumb},
+    components: {DetailsPage},
     name: 'historyorder',
     data () {
       return {
+        DetailsPageVisible:false,
+        DetailsPageActive:3,
+        DetailsPageDataList:[{
+            D_title:"乘客下单",
+            D_content:"广州市天河区广汽中心南门  GPS: 23.1009.113.2154",
+            D_time:"2019.07.15 19:31:42",
+          },{
+            D_title:"司机接单",
+            D_content:"广州市天河区天汇广场IGC-西门  GPS: 23.1009.113.4321",
+            D_time:"2019.07.15 19:31:42",
+          },{
+            D_title:"乘客上车",
+            D_content:"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+            D_time:"2019.07.15 19:35:43",
+          },{
+            D_title:"司机一键报警",
+            D_content:"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+            D_time:"2019.07.15 19:35:43",
+          },{
+            D_title:"订单结束",
+            D_content:"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
+            D_time:"2019.07.15 19:56:32",
+          }
+        ],
         addMsgForm:{
           orderId:'',
           driverTel:'',
@@ -258,6 +285,10 @@
       }
     },
     methods : {
+      handleEdit(row){
+        console.log("row",row)
+        this.DetailsPageVisible = true;
+      },
       getRowClass({ row, column, rowIndex, columnIndex }) {
         if (rowIndex === 0) {
             return 'background:#e5e5e5'
