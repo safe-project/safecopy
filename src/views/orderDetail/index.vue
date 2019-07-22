@@ -25,7 +25,26 @@
 							</el-row>
 		  			</div>
 		  			<div class="timeline public" style="">
-		  				
+		  				<div class="title"><strong>业务时间轴</strong></div>
+					    <div style="width: 100%; height: 300px; padding-bottom: 40px; display: table;margin-top: 10px;">
+					      <div class="DetailsPage-lt">
+					        <div class="delate-time"
+					          :style="{'top': `${index*((300-46)/(timeline.length-1))+4}px`}"
+					          v-for="(item, index) in timeline"
+					          :key="index"
+					        >{{item.D_time}}</div>
+					      </div>
+					      <div class="DetailsPage-rt">
+					        <el-steps direction="vertical" :active="DetailsPageActive">
+					          <el-step
+					          v-for="(item, index) in timeline"
+					          :key="index"
+					          :title="item.D_title"
+					          :description="item.D_content==='null'?'':item.D_content"
+					          ></el-step>
+					        </el-steps>
+					      </div>
+					    </div>
 		  			</div>
 		  			<div class="safeInfo public">
 		  				<div class="title"><strong>安全信息</strong></div>
@@ -51,8 +70,8 @@
 		  			<div class="textarea public">
 							<el-input type="textarea" v-model="textarea"></el-input>
 							<el-row  type="flex" justify='center' style="margin-top: 10px;">
-							  <el-col :span="6"><el-button type="warning" size="small" >处理风险</el-button></el-col>
-							  <el-col :span="6"><el-button type="danger" size="small" >解除风险</el-button></el-col>
+							  <el-col :span="6"><el-button type="warning" size="small" @click.native.stop="riskDialogVisible = true">处理风险</el-button></el-col>
+							  <el-col :span="6"><el-button type="danger" size="small" @click="riskDialogVisible = true">解除风险</el-button></el-col>
 							</el-row>
 		  			</div>
 		  			<div class="routeInfo public">
@@ -106,8 +125,19 @@
 		  			</div>
 		  		</div>
 	  		</el-col>
-
-
+				<!-- 处理风险的弹框dialog -->
+				<el-dialog
+				  title="提示"
+				  :visible.sync="riskDialogVisible"
+				  append-to-body
+				  width="30%"
+				  center>
+				  <span style='font-size: 12px;'>处理风险需要将线下与乘人员沟通的结果填写到备注中，是否已沟通</span>
+				  <span slot="footer" class="dialog-footer">
+				    <el-button @click="riskDialogVisible = false" size="mini">否</el-button>
+				    <el-button type="primary" @click="riskDialogVisible = false" size="mini">是</el-button>
+				  </span>
+				</el-dialog>
 	  		<!-- 右侧地图 -->
 	  		<el-col :span="13" class="rightMap">
 	  			<div class="grid-content bg-purple">
@@ -129,7 +159,8 @@
       return {
         detailDialogVisible:false,
         title:"",
-        textarea:""
+        textarea:"",
+        riskDialogVisible:false,
       }
     },
     props:{
@@ -137,12 +168,15 @@
        	type:Boolean,
        	required:true
       },
+      DetailsPageActive:{
+        type: Number
+    	},
       driverInfo:{
       	type:Object,
         required:true
       },
       timeline:{
-      	type:Object,
+      	type:Array,
         required:true
       },
       safeInfo:{
@@ -253,5 +287,19 @@
 	      font-size: 12px;
 	  }
 	}
+
+	.DetailsPage-lt {
+    width: 80px;
+    color: #818181;
+    font-size: 13px;
+    display: table-cell;
+    position: relative;
+  } 
+  .DetailsPage-lt .delate-time {
+    position: absolute;
+  }
+  .DetailsPage-rt {
+    display: table-cell;
+  }
 </style>
     

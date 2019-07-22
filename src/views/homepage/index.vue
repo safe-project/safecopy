@@ -86,6 +86,7 @@
 
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
+      :DetailsPageActive="DetailsPageActive"
       :driverInfo="driverInfo" 
       :timeline="timeline" 
       :safeInfo="safeInfo" 
@@ -116,9 +117,10 @@ export default {
       orderListData:[],
       loading: false,
       /*************************/
+      DetailsPageActive:3,
       dialogVisible:false,
       driverInfo:{},
-      timeline:{},
+      timeline:[],
       safeInfo:{},
       routeInfo:[],
       orderID:""
@@ -160,7 +162,7 @@ export default {
     changeDialogVisible(){
       this.dialogVisible = false;
       this.driverInfo = {};
-      this.timeline = {};
+      this.timeline = [];
       this.safeInfo = {};
       this.routeInfo = [];
     },

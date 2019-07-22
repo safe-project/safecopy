@@ -88,6 +88,7 @@
     </el-table>
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
+      :DetailsPageActive="DetailsPageActive"
       :driverInfo="driverInfo" 
       :timeline="timeline" 
       :safeInfo="safeInfo" 
@@ -99,7 +100,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
   import { getHistoryOrderList} from '@/api/historyOrder'
   import { getOrderDetail} from '@/api/orderDetail'
   import orderDetailDialog from '@/views/orderDetail/index.vue';
@@ -129,8 +129,9 @@
         ],
         historyOrderListData:[],
         dialogVisible:false,
+        DetailsPageActive:3,
         driverInfo:{},
-        timeline:{},
+        timeline:[],
         safeInfo:{},
         routeInfo:[],
         orderID:""
@@ -180,7 +181,7 @@
       changeDialogVisible(){
         this.dialogVisible = false;
         this.driverInfo = {};
-        this.timeline = {};
+        this.timeline = [];
         this.safeInfo = {};
         this.routeInfo = [];
       },

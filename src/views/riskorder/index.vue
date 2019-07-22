@@ -38,6 +38,7 @@
 
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
+      :DetailsPageActive="DetailsPageActive"
       :driverInfo="driverInfo" 
       :timeline="timeline" 
       :safeInfo="safeInfo" 
@@ -59,8 +60,9 @@
         riskOrderListData:[],//数据
 
         dialogVisible:false,
+        DetailsPageActive:3,
         driverInfo:{},
-        timeline:{},
+        timeline:[],
         safeInfo:{},
         routeInfo:[],
         orderID:""
@@ -109,7 +111,7 @@
       changeDialogVisible(){
         this.dialogVisible = false;
         this.driverInfo = {};
-        this.timeline = {};
+        this.timeline = [];
         this.safeInfo = {};
         this.routeInfo = [];
       },
