@@ -1,13 +1,15 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <titleBar></titleBar>
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
-    <sidebar class="sidebar-container" />
-    <div class="main-container">
-      <div :class="{'fixed-header':fixedHeader}">
-        <navbar />
+    <div class="middle-main-wrap">
+      <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+      <sidebar class="sidebar-container" />
+      <div class="main-container">
+        <div :class="{'fixed-header':fixedHeader}">
+          <navbar />
+        </div>
+        <app-main />
       </div>
-      <app-main />
     </div>
   </div>
 </template>
@@ -59,13 +61,17 @@ export default {
   .app-wrapper {
     @include clearfix;
     position: relative;
-    margin-top: 50px;
     height: 100%;
     width: 100%;
     &.mobile.openSidebar{
       position: fixed;
       top: 0;
     }
+  }
+  .middle-main-wrap{
+    height: 100%;
+    padding-top: 50px;
+    box-sizing: border-box;
   }
   .drawer-bg {
     background: #000;
