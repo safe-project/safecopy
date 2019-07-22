@@ -82,7 +82,6 @@
           </template>
         </el-table-column>
       </el-table>
-
       <!-- 分页组件 -->
       <div class="pagination clearfloat">
         <el-pagination
@@ -97,7 +96,6 @@
         </el-pagination>
       </div>
     </div>
-
     <orderDetailDialog 
       :dialogVisible="dialogVisible" 
       :DetailsPageActive="DetailsPageActive"
@@ -108,10 +106,6 @@
       :orderID="orderID" 
       @transfer="changeDialogVisible">
     </orderDetailDialog>
-
-
-    <!-- <div class="dashboard-text">name: {{ name }}</div>
-    <div class="dashboard-text">roles: {{ roles }}</div> -->
   </div>
 </template>
 
@@ -131,7 +125,6 @@ export default {
     return {
       orderListData:[],
       loading: false,
-      /*************************/
       DetailsPageActive:3,
       dialogVisible:false,
       driverInfo:{},
@@ -139,17 +132,13 @@ export default {
       safeInfo:{},
       routeInfo:[],
       orderID:"",
-      /*************************/
       currentPage:1,
       total:0,
       page:1,
-      limit:10,
-      /*************************/
+      limit:10
     }
   },
-  /*************************/
   components:{ orderDetailDialog },
-  /*************************/
   methods : {
     getRowClass({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0) {
@@ -244,9 +233,9 @@ export default {
   }
 }
 
-  .el-button--text:focus, .el-button--text:hover{
-    color: #4278EF;
-    font-weight: bolder;
-  }
+.el-button--text:focus, .el-button--text:hover{
+  color: #4278EF;
+  font-weight: bolder;
+}
 
 </style>

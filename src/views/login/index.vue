@@ -8,7 +8,6 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <!-- <svg-icon icon-class="user" /> -->
           <i class="el-icon-user-solid"></i>
         </span>
         <el-input
@@ -24,8 +23,6 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <!-- <svg-icon icon-class="password" /> -->
-          
           <i class="el-icon-lock"></i>
         </span>
         <el-input
@@ -51,11 +48,6 @@
         <el-col :span="12"><el-button type="primary" class ="tipsButton" @click.native.prevent="handleReset">取消</el-button></el-col>
         <el-col :span="12"><el-button :loading="loading" type="primary" class="tipsButton" @click.native.prevent="handleLogin">登录</el-button></el-col>
       </el-row>
-
-      
-      
-
-
     </el-form>
   </div>
 </template>
@@ -126,6 +118,7 @@ export default {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
             console.log('登录成功');
+            this.$router.push('/')
             if (this.checked) {
               this.storeCookie();
             }
@@ -135,7 +128,6 @@ export default {
             // }).catch(()=>{
 
             // })
-            this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch(() => {
             console.log('888');

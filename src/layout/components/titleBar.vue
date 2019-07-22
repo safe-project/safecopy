@@ -7,33 +7,19 @@
           <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <img src="../../assets/logo/fengche.png" class="nickNameImg">
-            <span :title="nickName" class="nickName">{{nickName}}</span>
+            <span :title="nickName" class="nickName">{{name}}</span>
             <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:10px ">
-            <el-dropdown-item @click.native="logout">退出登陆</el-dropdown-item>
+            <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-
-	      	<!-- <el-dropdown>
-            <span class="el-dropdown-link">
-              <img src="" class="">
-              <span class="dropdown">超级管理员</span>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>
-              <span style="display:block;" @click="logout">退出</span>
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown> -->
         </div>
     </div>
 </template>
 
 <script>
-    /*引组件 import userList from '@/view/userList.vue'*/
-    /*引接口 import {getUserInfo} from "@/api/userConfig.js"*/
-    /*引vuex import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'"*/
+import { mapGetters } from 'vuex';
     export default {
         name: 'titleBar',
         data(){
@@ -42,8 +28,10 @@
                 
             }
         },
-        computed:{
-            
+        computed: {
+          ...mapGetters([
+            'name','roles'
+          ])
         },
         props: {
             
@@ -116,7 +104,7 @@
           display: inline-block;
           color: #fff;
           text-align: right;
-          margin-left: 50px;
+          margin-left: 20px;
           vertical-align: middle;
           width: 80px;
           height: 100%;

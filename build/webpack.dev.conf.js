@@ -18,11 +18,7 @@ const app = express() //请求server
 var apiRoutes = express.Router()
 app.use(apiRoutes)//域名下的访问路径
 
-
-// var appData = require('./db.json') //加载本地数据文件
-// var appData2 = require('./db2.json') //加载本地数据文件
 //接口的返回数据
-
 var loginData = require('../src/mock/login/login.json')
 var logoutData = require('../src/mock/login/logout.json')
 var rolesData = require('../src/mock/login/roles.json')
@@ -30,8 +26,7 @@ var orderListData = require('../src/mock/homePage/orderList.json')
 var orderDetailData = require('../src/mock/orderDetail/orderDetail.json')
 var riskOrderListData = require('../src/mock/riskOrder/riskOrderList.json')
 var historyOrderListData = require('../src/mock/historyOrder/historyOrderList.json')
-//import { default as data }from '@/mock/index.js'
-// console.log(orderListdata,777);
+
 /*************************************************************/
 
 

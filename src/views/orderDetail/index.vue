@@ -30,14 +30,14 @@
 					      <div class="DetailsPage-lt">
 					        <div class="delate-time"
 					          :style="{'top': `${index*(80)+4}px`}"
-					          v-for="(item, index) in timeline1"
+					          v-for="(item, index) in timeline"
 					          :key="index"
 					        >{{item.D_time}}</div>
 					      </div>
 					      <div class="DetailsPage-rt">
 					        <el-steps direction="vertical" :active="DetailsPageActive" :space="80">
 					          <el-step
-					          v-for="(item, index) in timeline1"
+					          v-for="(item, index) in timeline"
 					          :key="index"
 					          :title="item.D_title"
 					          :description="item.D_content==='null'?'':item.D_content"
@@ -150,9 +150,6 @@
 </template>
 
 <script>
-  /*引组件 import userList from '@/view/userList.vue'*/
-  /*引接口 import {getUserInfo} from "@/api/userConfig.js"*/
-  /*引vuex import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'"*/
   export default {
     name: 'OrderDetail',
     data(){
@@ -160,30 +157,7 @@
         detailDialogVisible:false,
         title:"",
         textarea:"",
-		riskDialogVisible:false,
-		"timeline1":[
-        {
-        "D_title":"乘客下单",
-        "D_content":"广州市天河区广汽中心南门  GPS: 23.1009.113.2154",
-        "D_time":"2019.07.11 19:31:42"
-      },{
-        "D_title":"司机接单",
-        "D_content":"广州市天河区天汇广场IGC-西门  GPS: 23.1009.113.4321",
-        "D_time":"2019.07.15 19:31:42"
-      },{
-        "D_title":"乘客上车",
-        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.15 19:35:43"
-      },{
-        "D_title":"司机一键报警",
-        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.15 19:35:43"
-      },{
-        "D_title":"订单结束",
-        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.15 19:56:32"
-      }
-    ],
+				riskDialogVisible:false,
       }
     },
     props:{
@@ -226,7 +200,7 @@
 	    }
     },
     created(){
-    	console.log("create了");
+    	
     },
     watch: {
       // dialog弹框打开关闭触发的操作
