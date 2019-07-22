@@ -1,0 +1,44 @@
+{
+  "state": 0,
+  "data": {
+    "driverInfo": {
+    	"orderID":"15254356377464757",
+    	"driverPhone":"13067857878",
+    	"driverID":"356476",
+    	"driverIMEI":"3746844838372648",
+    	"passengerPhone":"13567656789",
+    	"passengerID":"356767",
+    	"passengerIMEI":"474856284844837",
+    	"emergencyPhone":"187878474887"
+    },
+    "timeline":{
+
+    },
+    "safeInfo":{
+    	"driverMileage":"13.85公里",
+    	"yawNum":"31次",
+    	"yawRate":"2.8次/公里",
+    	"startETA":"13分30秒",
+    	"currentETA":"40分30秒",
+    	"yawAngle":"40度",
+    	"driverPolice":"2019.07.15 19:36",
+    	"emergencyPhone":"无",
+    	"passengerPolice":"无",
+    	"safeLog":"2019.07.15 12:30:23 由安全系统判定为[司机报警]"
+    },
+    "routeInfo":[
+    	{
+    		"id":1,
+    		"routeID":"37363746736726764",
+    		"startDate":"2019.07.05 19:30",
+    		"stage":"接驾"
+    	},
+    	{
+    		"id":2,
+    		"routeID":"37363746736726764",
+    		"startDate":"2019.07.05 20:30",
+    		"stage":"下单"
+    	}
+    ]
+  }
+}

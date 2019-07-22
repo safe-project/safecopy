@@ -92,7 +92,7 @@
           position: absolute;
 
           top:10px;
-          left:28px;
+          left:60px;
           background: url(../../assets/logo/icon.png) no-repeat center center;
           background-size:cover;
 
@@ -101,7 +101,7 @@
           display: inline-block;
           line-height:50px;
           font-size: 22px;
-          margin-left:10px;
+
           color:#fff;
           background-color:#1e2a44;
         }

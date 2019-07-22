@@ -27,6 +27,7 @@ var loginData = require('../src/mock/login/login.json')
 var logoutData = require('../src/mock/login/logout.json')
 var rolesData = require('../src/mock/login/roles.json')
 var orderListData = require('../src/mock/homePage/orderList.json')
+var orderDetailData = require('../src/mock/orderDetail/orderDetail.json')
 //import { default as data }from '@/mock/index.js'
 // console.log(orderListdata,777);
 /*************************************************************/
@@ -82,6 +83,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
       apiRoutes.get('/api/homepage/orderList', (req, res) => {
         res.json({errno:0,data:orderListData})
+      })
+
+      apiRoutes.get('/api/orderDetail/orderDetail', (req, res) => {
+        res.json({errno:0,data:orderDetailData})
       })
     }
 
