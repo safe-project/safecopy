@@ -26,7 +26,7 @@
 		  			</div>
 		  			<div class="timeline public" style="margin-bottom:0px">
 		  				<div class="title"><strong>业务时间轴</strong></div>
-					    <div style="width: 100%; height: 400px; display: table;margin-top: 10px;">
+					    <div style="width: 100%;  display: table;margin-top: 10px;">
 					      <div class="DetailsPage-lt">
 					        <div class="delate-time"
 					          :style="{'top': `${index*(80)+4}px`}"
@@ -169,23 +169,19 @@
       },{
         "D_title":"司机接单",
         "D_content":"广州市天河区天汇广场IGC-西门  GPS: 23.1009.113.4321",
-        "D_time":"2019.07.12 19:31:42"
+        "D_time":"2019.07.15 19:31:42"
       },{
         "D_title":"乘客上车",
         "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.13 19:35:43"
+        "D_time":"2019.07.15 19:35:43"
       },{
         "D_title":"司机一键报警",
         "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.14 19:35:43"
+        "D_time":"2019.07.15 19:35:43"
       },{
-        "D_title":"司机一键报警",
+        "D_title":"订单结束",
         "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.14 19:35:43"
-      },{
-        "D_title":"司机一键报警",
-        "D_content":"广州市天河区淇滨幼儿园大门  GPS: 23.1009.113.4532",
-        "D_time":"2019.07.14 19:35:43"
+        "D_time":"2019.07.15 19:56:32"
       }
     ],
       }
