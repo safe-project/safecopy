@@ -4,6 +4,9 @@
     
     <el-form :model="addMsgForm" ref="addMsgForm" class='addMsgForm'>
       <el-row class="addMsgFormRow">
+        <el-col :span="24" class='rowTitle'>
+          <span>订单以及司乘信息</span>
+        </el-col>
         <el-col :span="2">
           <el-form-item label="订单ID:" prop="orderId" :showMessage='false' ></el-form-item>
         </el-col>
@@ -115,21 +118,13 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <!-- <el-row class="tabsButton">
-        <el-button 
-          size="small" 
-          :class="item.isActive?'isActive':'isNormal'"
-          v-for="item in tabsButtonList" 
-          :key="item.id" 
-          :value="item.id" 
-          @click.native="handleClick(item.id)">{{item.label}}</el-button>
-      </el-row> -->
       <el-row class="addMsgFormRow">
-        <el-form-item label="预警信息">
-          <el-checkbox-group v-model="addMsgForm.activeIdArr">
-              <el-checkbox  size="medium" label="司机一键报警" ></el-checkbox>
-              <el-checkbox  size="medium" label="严重偏航"></el-checkbox>
-              <el-checkbox  size="medium" label="乘客通知紧急联系人"></el-checkbox>
+        <el-col :span="24" class='rowTitle'>
+          <span>预警信息</span>
+        </el-col>
+        <el-form-item prop="activeIdArr">
+          <el-checkbox-group v-model="addMsgForm.activeIdArr" class="checkbox">
+            <el-checkbox v-for="p in activeIdArrList" :label="p.id" :key="p.id" :value="p.id">{{p.label}}</el-checkbox>
           </el-checkbox-group>
         </el-form-item>
       </el-row>
@@ -187,10 +182,16 @@
           offAddress:'',
           startTime:'',
           endTime:'',
+          activeIdArr:[],
         },
         dataList:[],//数据
         listLoading: false,//显示loading
-        activeIdArr:[],
+        
+        activeIdArrList:[
+          {id: '1',label:"司机一键报警"},
+          {id: '2',label:"严重偏航"},
+          {id: '3',label:"乘客通知紧急联系人"},
+        ],
 
         total: 0,//总数
         page: 1,//当前页
@@ -305,6 +306,11 @@
 <style>
   .addMsgForm .el-date-editor.el-input, .el-date-editor.el-input__inner{
     width:148px;
+  }
+  .addMsgForm .rowTitle{
+    font-size: 14px;
+    line-height: 20px;
+    color:#4D4D4D;
   }
   .addMsgForm .el-form-item__label{
     font-size: 14px;
