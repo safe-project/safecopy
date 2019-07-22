@@ -204,4 +204,8 @@ export default {
   }
 }
 
+  .el-button--text:focus, .el-button--text:hover{
+    color: #4278EF;
+    font-weight: bolder;
+  }
 </style>

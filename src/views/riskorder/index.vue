@@ -171,15 +171,15 @@
 </script>
 <style scoped>
   .tabsButton{
-    margin-bottom: 15px;
-  }
-  .tabsButton .el-button:focus, .el-button:hover{
-    background: #4278EF;
-    color: white;
+    margin-bottom: 15px;  
   }
   .isActive{
     background: #4278EF;
     color: white;
+  }
+  .el-button--text:focus, .el-button--text:hover{
+    color: #4278EF;
+    font-weight: bolder;
   }
 
 </style>
