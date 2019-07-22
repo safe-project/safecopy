@@ -5,37 +5,37 @@
         <!-- 左侧订单信息 -->
 	  		<el-col :span="11" class="leftInfo">
 		  		<div class="grid-content bg-purple">
-		  			<div class="driverInfo public" style="">
+		  			<div class="driverInfo public">
 		  				<div class="title"><strong>司机信息</strong></div>
 		  				<el-row>
-							  <el-col :span="24"><div><strong>订单ID：</strong>{{driverInfo.orderID}}</div></el-col>
+							  <el-col :span="24"><div><span>订单ID：</span>{{driverInfo.orderID}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="8"><div><strong>司机手机号：</strong>{{driverInfo.driverPhone}}</div></el-col>
-							  <el-col :span="6"><div><strong>司机ID：</strong>{{driverInfo.driverID}}</div></el-col>
-							  <el-col :span="8"><div><strong>司机IMEI：</strong>{{driverInfo.driverIMEI}}</div></el-col>
+							  <el-col :span="8"><div><span>司机手机号：</span>{{driverInfo.driverPhone}}</div></el-col>
+							  <el-col :span="6"><div><span>司机ID：</span>{{driverInfo.driverID}}</div></el-col>
+							  <el-col :span="8"><div><span>司机IMEI：</span>{{driverInfo.driverIMEI}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="8"><div><strong>乘客手机号：</strong>{{driverInfo.passengerPhone}}</div></el-col>
-							  <el-col :span="6"><div><strong>乘客ID：</strong>{{driverInfo.passengerID}}</div></el-col>
-							  <el-col :span="8"><div><strong>乘客IMEI：</strong>{{driverInfo.passengerIMEI}}</div></el-col>
+							  <el-col :span="8"><div><span>乘客手机号：</span>{{driverInfo.passengerPhone}}</div></el-col>
+							  <el-col :span="6"><div><span>乘客ID：</span>{{driverInfo.passengerID}}</div></el-col>
+							  <el-col :span="8"><div><span>乘客IMEI：</span>{{driverInfo.passengerIMEI}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="24"><div><strong>紧急联系人手机号：</strong>{{driverInfo.emergencyPhone}}</div></el-col>
+							  <el-col :span="24"><div><span>紧急联系人手机号：</span>{{driverInfo.emergencyPhone}}</div></el-col>
 							</el-row>
 		  			</div>
-		  			<div class="timeline public" style="">
+		  			<div class="timeline public" style="margin-bottom:0px">
 		  				<div class="title"><strong>业务时间轴</strong></div>
-					    <div style="width: 100%; height: 300px; padding-bottom: 40px; display: table;margin-top: 10px;">
+					    <div style="width: 100%; height: 350px; display: table;margin-top: 10px;">
 					      <div class="DetailsPage-lt">
 					        <div class="delate-time"
-					          :style="{'top': `${index*((300-46)/(timeline.length-1))+4}px`}"
+					          :style="{'top': `${index*((350-46)/(timeline.length-1))+4}px`}"
 					          v-for="(item, index) in timeline"
 					          :key="index"
 					        >{{item.D_time}}</div>
 					      </div>
 					      <div class="DetailsPage-rt">
-					        <el-steps direction="vertical" :active="DetailsPageActive">
+					        <el-steps direction="vertical" :active="DetailsPageActive" :space="80">
 					          <el-step
 					          v-for="(item, index) in timeline"
 					          :key="index"
@@ -46,25 +46,25 @@
 					      </div>
 					    </div>
 		  			</div>
-		  			<div class="safeInfo public">
+		  			<div class="safeInfo public" style="margin-top:0px">
 		  				<div class="title"><strong>安全信息</strong></div>
 		  				<el-row>
-							  <el-col :span="8"><div><strong>行驶里程：</strong>{{safeInfo.driverMileage}}</div></el-col>
-							  <el-col :span="6"><div><strong>偏航次数：</strong>{{safeInfo.yawNum}}</div></el-col>
-							  <el-col :span="8"><div><strong>偏航频率：</strong>{{safeInfo.yawRate}}</div></el-col>
+							  <el-col :span="9"><div><span>行驶里程：</span>{{safeInfo.driverMileage}}</div></el-col>
+							  <el-col :span="8"><div><span>偏航次数：</span>{{safeInfo.yawNum}}</div></el-col>
+							  <el-col :span="6"><div><span>偏航频率：</span>{{safeInfo.yawRate}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="8"><div><strong>初始ETA：</strong>{{safeInfo.startETA}}</div></el-col>
-							  <el-col :span="6"><div><strong>当前ETA：</strong>{{safeInfo.currentETA}}</div></el-col>
-							  <el-col :span="8"><div><strong>偏航角度：</strong>{{safeInfo.yawAngle}}</div></el-col>
+							  <el-col :span="9"><div><span>初始ETA：</span>{{safeInfo.startETA}}</div></el-col>
+							  <el-col :span="8"><div><span>当前ETA：</span>{{safeInfo.currentETA}}</div></el-col>
+							  <el-col :span="6"><div><span>偏航角度：</span>{{safeInfo.yawAngle}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="8"><div><strong>司机一键报警：</strong>{{safeInfo.driverPolice}}</div></el-col>
-							  <el-col :span="6"><div><strong>通知紧急联系人：</strong>{{safeInfo.emergencyPhone}}</div></el-col>
-							  <el-col :span="8"><div><strong>乘客一键报警：</strong>{{safeInfo.passengerPolice}}</div></el-col>
+							  <el-col :span="9"><div><span>司机一键报警：</span><span class="redSpan">{{safeInfo.driverPolice}}</span></div></el-col>
+							  <el-col :span="8"><div><span>通知紧急联系人：</span>{{safeInfo.emergencyPhone}}</div></el-col>
+							  <el-col :span="6"><div><span>乘客一键报警：</span>{{safeInfo.passengerPolice}}</div></el-col>
 							</el-row>
 							<el-row>
-							  <el-col :span="24"><div><strong>安全日志：</strong>{{safeInfo.safeLog}}</div></el-col>
+							  <el-col :span="24"><div><span>安全日志：</span>{{safeInfo.safeLog}}</div></el-col>
 							</el-row>
 		  			</div>
 		  			<div class="textarea public">
@@ -229,10 +229,18 @@
 
 <style lang="less">
 .orderDetail{
+	.redSpan{
+		color:#FF4C4C;
+	}
 	.el-row{
 		margin-bottom: 10px;
 		.el-col{
+			font-family: PingFangSC-Medium;
 			font-size: 12px;
+			color: #4D4D4D;
+			letter-spacing: 0;
+			line-height: 20px;
+			white-space:nowrap;
 		}
 	}
 	.textarea{
@@ -289,17 +297,65 @@
 	}
 
 	.DetailsPage-lt {
-    width: 80px;
-    color: #818181;
+    width: 70px;
+    color: #4D4D4D;
     font-size: 13px;
     display: table-cell;
     position: relative;
+	white-space:normal;
   } 
   .DetailsPage-lt .delate-time {
     position: absolute;
   }
   .DetailsPage-rt {
-    display: table-cell;
+	display: table-cell;
+	.el-step__title.is-finish{
+		color: #4D4D4D ;
+	}
+	.el-step__description.is-finish{
+		color: #4D4D4D ;
+	}
+	.el-step__head.is-finish{
+		color: #4D4D4D;
+		border-color: #4D4D4D;
+	}
+	.el-step__line{
+		background-color: #D8D8D8;
+		opacity: 1;
+	}
+	.el-step.is-vertical .el-step__line{
+		border:1px;
+	}
+	.el-step__line-inner{
+		border: 1px;
+	}
+	.el-step.is-vertical .el-step__head{
+		// width: 60px;
+	}
+	.el-step__icon{
+		width: 14px;
+		height: 14px;
+		top: -3px;
+		left: 4px;
+		border:0;
+	}
+	.el-step__icon-inner{
+		background-color: #939393;
+		color: #939393;
+		border-radius: 50%;
+		width: 14px;
+		height: 14px;
+	}
+	.el-step__title.is-process{
+		color:#FF4C4C;
+	}
+	.el-step__description.is-process{
+		color:#FF4C4C;
+	}
+	.el-step__head.is-process .el-step__icon-inner{
+		color:#FF4C4C;
+		background-color:#FF4C4C;
+	}
   }
 </style>
     
