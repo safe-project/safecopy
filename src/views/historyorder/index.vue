@@ -99,6 +99,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import { getHistoryOrderList} from '@/api/historyOrder'
   import { getOrderDetail} from '@/api/orderDetail'
   import orderDetailDialog from '@/views/orderDetail/index.vue';
@@ -213,7 +214,6 @@
     }
   }
 </script>
-
 <style lang="less">
   .historyOrder{
     .el-input .el-input__inner{
