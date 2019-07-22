@@ -78,7 +78,7 @@
                   <el-button type="primary" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
               </el-tooltip> -->
 
-              <el-button type="primary" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
+              <el-button type="text" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
           </template>
         </el-table-column>
       </el-table>

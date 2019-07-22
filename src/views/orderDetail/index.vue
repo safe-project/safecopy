@@ -99,7 +99,7 @@
 				          width="80"
 				          align="center">
 				          <template slot-scope="scope">
-				              <el-button type="primary" @click.stop="viewRoute(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
+				              <el-button type="text" @click.stop="viewRoute(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
 				          </template>
 				        </el-table-column>
 				      </el-table>

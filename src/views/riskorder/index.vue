@@ -1,18 +1,17 @@
 <template>
-  <div class="app-container">
-    <!-- <bread-crumb :page="$options.const.pageName"></bread-crumb> -->
+  <div class="riskOrder">
     <el-row class="tabsButton">
-      <el-button 
-        size="small" 
-        :class="item.isActive?'isActive':'isNormal'"
-        v-for="item in tabsButtonList" 
-        :key="item.id" 
-        :value="item.id" 
-        @click.native="handleClick(item.id)">{{item.label}}</el-button>
+      <el-button type="default" size="small" @click.native="handleClick(0)">全部</el-button>
+      <el-button type="danger" size="small" @click.native="handleClick(1)">司机一键报警</el-button>
+      <el-button type="primary" size="small" @click.native="handleClick(3)">严重偏航</el-button>
+      <el-button type="warning" size="small" @click.native="handleClick(2)">乘客通知紧急联系人</el-button>
     </el-row>
     <el-table 
-      :data="dataList" 
+      :data="riskOrderListData" 
       highlight-current-row
+      border
+      inline
+      stripe
       header-align="center" 
       style="width: 99%;" stripe
       :header-cell-style="getRowClass"
@@ -20,166 +19,146 @@
       <el-table-column label="订单ID" prop="orderID" align="center" min-width="120"></el-table-column>
       <el-table-column label="车牌号" prop="carNum" align="center" min-width="120"></el-table-column>
       <el-table-column label="司机姓名" prop="driverName" align="center" min-width="120"></el-table-column>
-      <el-table-column label="司机电话" prop="driverNum" align="center" min-width="120"></el-table-column>
+      <el-table-column label="司机电话" prop="driverPhone" align="center" min-width="120"></el-table-column>
       <el-table-column label="订单开始时间" prop="startTime" align="center" min-width="160"></el-table-column>
       <el-table-column label="订单预警时间" prop="warningTime" align="center" min-width="160"></el-table-column>
       <el-table-column label="预警原因" prop="WarningReason" align="center" min-width="160">
         <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.WarningReason === '司机一键报警' ? 'danger' : scope.row.WarningReason === '严重偏航' ?'primary' : 'warning'"
-              close-transition>{{scope.row.WarningReason}}</el-tag>
-            </template>
+          <el-tag
+            :type="scope.row.WarningReason === '司机一键报警' ? 'danger' : scope.row.WarningReason === '严重偏航' ?'primary' : 'warning'"
+            close-transition>{{scope.row.WarningReason}}</el-tag>
+          </template>
       </el-table-column>
       <el-table-column label="订单详情" width="100">
         <template slot-scope="scope">
-          <el-button type="text">查看</el-button>
+          <el-button type="text" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
         </template>
       </el-table-column>
     </el-table>
-      <!-- <el-col :span="24" class="toolbar pageall">
-        <pagination :total="total" @handleSizeChange="handleSizeChange" @handleCurrentChange="handleCurrentChange"></pagination>
-      </el-col> -->
+
+    <orderDetailDialog 
+      :dialogVisible="dialogVisible" 
+      :driverInfo="driverInfo" 
+      :timeline="timeline" 
+      :safeInfo="safeInfo" 
+      :routeInfo="routeInfo" 
+      :orderID="orderID" 
+      @transfer="changeDialogVisible">
+    </orderDetailDialog>
   </div>
 </template>
 
 <script>
-  // import pagination from "@/common/pagination";
-  // import breadCrumb from 'Components/breadcrumb';
+  import { getRiskOrderList} from '@/api/riskOrder'
+  import { getOrderDetail} from '@/api/orderDetail'
+  import orderDetailDialog from '@/views/orderDetail/index.vue';
   export default {
-    // components: {pagination,breadCrumb},
-    name: 'Riskorder',
-    data () {
+    name: 'RiskOrder',
+    data(){
       return {
-        tabsButtonList: [
-          {
-            id:'0',
-            isActive:false,
-            label:'全部'
-          },{
-            id:'1',
-            isActive:false,
-            label:'司机一键报警'
-          },{
-            id:'2',
-            isActive:false,
-            label:'严重偏航'
-          },{
-            id:'3',
-            isActive:false,
-            label:'乘客通知紧急联系人'
-          }
-        ],
-        dataList:[],//数据
-        listLoading: false,//显示loading
-        activeId: "0",
+        riskOrderListData:[],//数据
 
-        total: 0,//总数
-        page: 1,//当前页
-        pageSize : 10,//每页数量
-        sels: [],//列表选中列
-        sortColumn: '',//排序字段
-        sortType: '',//排序方式
-
-        data1: {     //接口調通之後刪除
-          total: 3000,
-          dataList: [
-            {
-              orderID: '1234212',
-              carNum: '粤AK4758',
-              driverName: '谢贾睿',
-              driverNum: '13912348765',
-              WarningReason: '司机一键报警',
-              startTime: '2019-07-15 19:00:00',
-              warningTime: '2019-07-15 19:30:00',
-              reasonType: 1
-            }, {
-              orderID: '1234212',
-              carNum: '粤AK4758',
-              driverName: '谢贾睿',
-              driverNum: '13912348765',
-              WarningReason: '严重偏航',
-              startTime: '2019-07-15 19:00:00',
-              warningTime: '2019-07-15 19:30:00',
-              reasonType: 2
-            }, {
-              orderID: '1234212',
-              carNum: '粤AK4758',
-              driverName: '谢贾睿',
-              driverNum: '13912348765',
-              WarningReason: '乘客通知紧急联系人',
-              startTime: '2019-07-15 19:00:00',
-              warningTime: '2019-07-15 19:30:00',
-              reasonType: 2
-            }
-          ]
-        }
+        dialogVisible:false,
+        driverInfo:{},
+        timeline:{},
+        safeInfo:{},
+        routeInfo:[],
+        orderID:""
       }
     },
-    methods : {
+    computed:{
+      
+    },
+    props: {
+      
+    },
+    components:{ orderDetailDialog },
+    methods:{
       getRowClass({ row, column, rowIndex, columnIndex }) {
         if (rowIndex === 0) {
-            return 'background:#e5e5e5'
+          return 'background:#e5e5e5'
         }
       },
-      handleSizeChange(val) {
-        this.pageSize = val;
-        this.query();
+      getRiskOrderList() {
+        getRiskOrderList()
+          .then(response => {
+            this.riskOrderListData = response.data.data.data.dataList;
+          })
+          .catch(error => {
+            this.$message({
+              showClose: true,
+              message: 'sorry，获取风险订单列表失败',
+              type: 'error'
+            });
+          });
       },
-      handleCurrentChange(val) {
-        this.page = val;
-        this.query();
+      handleClick(id) {
+        this.getRiskOrderList(id);
       },
-      handleClick(val) {
-        this.activeId = val;
-        this.tabsButtonList[val].isActive = true;
-        for (var i = 0; i < this.tabsButtonList.length; i++) {
-          this.tabsButtonList[i].isActive = (i == val)?true:false;
-        }
-        this.query();
+
+      /*************************/
+      // 查看订单详情按钮
+      viewOrderDetail(scope){
+        this.dialogVisible = true;
+        console.log(scope.row.orderID);
+        this.orderID = scope.row.orderID;
+        //获取订单详情
+        this.getOrderDetail();
       },
-      query() {
-        let params = {
-          'page': this.page,
-          'pageSize': this.pageSize,
-          'activeId' :this.activeId
-        };
-        console.log("参数：",params);
-        this.dataList = this.data1.dataList;//接口調通之後刪除
-        this.total = this.data1.total;      //接口調通之後刪除
-        // this.listLoading = true;
-        // this.$apis['onlinestateratearea/accordingToAreaHistory'](params).then(data =>{
-        //   if (data.code == 1) {
-        //     this.dataList = data.dataList;
-        //     this.total = data.total;
-        //     this.listLoading = false;
-        //   }else{
-        //     this.$message({
-        //       showClose: true,
-        //       message: data.errormsg,
-        //       type: 'error'
-        //     });
-        //   }
-        // }).catch( data =>{
-        //   this.listLoading = false;
-        // });
-      }
+      // 详情dialog关闭的时候触发的操作
+      changeDialogVisible(){
+        this.dialogVisible = false;
+        this.driverInfo = {};
+        this.timeline = {};
+        this.safeInfo = {};
+        this.routeInfo = [];
+      },
+      // 获取订单详情接口
+      getOrderDetail() {
+        getOrderDetail()
+          .then(response => {
+            this.driverInfo = response.data.data.data.driverInfo;
+            this.timeline = response.data.data.data.timeline;
+            this.safeInfo = response.data.data.data.safeInfo;
+            this.routeInfo = response.data.data.data.routeInfo;
+          })
+          .catch(error => {
+            this.$message({
+              showClose: true,
+              message: 'sorry，获取订单详情失败',
+              type: 'error'
+            });
+          });
+      },
+      /*************************/
     },
-    mounted() {
-      this.handleClick(0);
+    created(){
+      this.getRiskOrderList(0);
+    },
+    mounted(){
+      
+    },
+    watch: {
+      
     }
   }
 </script>
-<style scoped>
-  .tabsButton{
-    margin-bottom: 15px;  
-  }
-  .isActive{
-    background: #4278EF;
-    color: white;
-  }
-  .el-button--text:focus, .el-button--text:hover{
-    color: #4278EF;
-    font-weight: bolder;
-  }
 
+<style lang="less">
+  .riskOrder{
+    .tabsButton{
+      margin: 20px 0;
+    }
+    .el-table__header tr,.el-table__header th {
+      padding: 0;
+      height: 40px;
+      font-size: 12px;
+      color: #1e2a44;
+    }
+    .el-table__body tr,.el-table__body td {
+        padding: 0;
+        height: 40px;
+        font-size: 12px;
+    }
+  }
 </style>
