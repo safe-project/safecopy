@@ -8,7 +8,7 @@
           <span class="el-dropdown-link">
             <img src="../../assets/logo/fengche.png" class="nickNameImg">
             <span :title="nickName" class="nickName">{{name}}</span>
-            <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 2px;right:2px;"></i>
+            <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 1px;right:6px;font-size: 10px;"></i>
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:10px ">
             <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
@@ -62,21 +62,21 @@ import { mapGetters } from 'vuex';
 
 <style scoped lang="less">
     .titleBar{
-      height: 50px;
-      line-height: 50px;
+      height: 60px;
+      line-height: 60px;
       width: 100%;
       background-color: #1e2a44;
       position: fixed;
       z-index:2000;
       top: 0;
       .left-logo{
-        height:50px;
+        height:60px;
         width: 300px;
         text-align: center;
         .title {
           display: inline-block;
-          line-height:50px;
-          font-size: 16px;
+          line-height:60px;
+          font-size: 18px;
           position: relative;
           color:#fff;
           background-color:#1e2a44;
@@ -85,7 +85,7 @@ import { mapGetters } from 'vuex';
             width: 30px;
             height: 30px;
             position: absolute;
-            top:10px;
+            top:14px;
             left:-35px;
             background: url(../../assets/logo/icon.png) no-repeat center center;
             background-size:cover;
@@ -94,7 +94,7 @@ import { mapGetters } from 'vuex';
         }
       }
       .right-menu {
-        width: 15%;
+        width: 10%;
         height:100%;
         position: absolute;
         top:0px;
@@ -102,12 +102,14 @@ import { mapGetters } from 'vuex';
         cursor: pointer;
         .nickName{
           display: inline-block;
+          font-size: 16px;
           color: #fff;
           text-align: right;
           margin-left: 20px;
           vertical-align: middle;
           width: 80px;
-          height: 100%;
+          height: 60px;
+          line-height: 60px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -118,7 +120,7 @@ import { mapGetters } from 'vuex';
           border-radius: 50%;
           position: absolute;
           left: 24px;
-          top: 10px;
+          top: 16px;
           animation:nickNameImg 4s linear 0s infinite;
         }
         @keyframes nickNameImg{

@@ -24,6 +24,16 @@ export default {
       this.getBreadcrumb()
     }
   },
+  // watch: {
+  //   $route(to,from) {
+  //     if (to.path === "/historyOrder/detail") {
+  //       console.log(9999);
+  //       this.levelList = [{ path: '/historyOrder/index', meta: { title: '历史订单查询' }},{ path: '/historyOrder/detail', meta: { title: '26666订单详情' }}]
+  //     }else{
+  //         this.getBreadcrumb();
+  //     }
+  //   }
+  // },
   created() {
     console.log('面包屑--调created了');
     this.getBreadcrumb()

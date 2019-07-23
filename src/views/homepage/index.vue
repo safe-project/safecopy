@@ -9,6 +9,7 @@
         v-loading="loading"
         header-align="center" 
         highlight-current-row
+        height="590"
         style="width: 99%;"
         element-loading-text="拼命加载中"
         element-loading-spinner="el-icon-loading"
@@ -96,7 +97,7 @@
         </el-pagination>
       </div>
     </div>
-    <orderDetailDialog 
+    <!-- <orderDetailDialog 
       :dialogVisible="dialogVisible" 
       :DetailsPageActive="DetailsPageActive"
       :driverInfo="driverInfo" 
@@ -105,20 +106,21 @@
       :routeInfo="routeInfo" 
       :orderID="orderID" 
       @transfer="changeDialogVisible">
-    </orderDetailDialog>
+    </orderDetailDialog> -->
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState,mapGetters,mapActions } from 'vuex';
 import { getOrderList} from '@/api/homepage';
 import { getOrderDetail} from '@/api/orderDetail';
 import orderDetailDialog from '@/views/orderDetail/index.vue';
 export default {
   name: 'Homepage',
   computed: {
+    ...mapState(['vorderId']),
     ...mapGetters([
-      'name','roles'
+      'name','roles','viewOrderId','orderId1'
     ])
   },
   data () {
@@ -131,11 +133,11 @@ export default {
       timeline:[],
       safeInfo:{},
       routeInfo:[],
-      orderID:"",
+      // orderID:"",
       currentPage:1,
       total:0,
       page:1,
-      limit:10
+      limit:20
     }
   },
   components:{ orderDetailDialog },
@@ -162,37 +164,40 @@ export default {
     /*************************/
     // 查看订单详情按钮
     viewOrderDetail(scope){
-      this.dialogVisible = true;
+      // this.dialogVisible = true;
       console.log(scope.row.orderID);
-      this.orderID = scope.row.orderID;
+      this.setVorderId(scope.row.orderID)
+      // this.orderID = scope.row.orderID;
+      // this.$store.dispatch('setVorderId', scope.row.orderId);
       //获取订单详情
-      this.getOrderDetail(scope.row.orderID);
+      // this.getOrderDetail(scope.row.orderID);
+      this.$router.push('/orderDetail/index');
     },
     // 详情dialog关闭的时候触发的操作
-    changeDialogVisible(){
-      this.dialogVisible = false;
-      this.driverInfo = {};
-      this.timeline = [];
-      this.safeInfo = {};
-      this.routeInfo = [];
-    },
+    // changeDialogVisible(){
+    //   this.dialogVisible = false;
+    //   this.driverInfo = {};
+    //   this.timeline = [];
+    //   this.safeInfo = {};
+    //   this.routeInfo = [];
+    // },
     // 获取订单详情接口
-    getOrderDetail(orderID) {
-      getOrderDetail(orderID)
-        .then(response => {
-          this.driverInfo = response.data.data.data.driverInfo;
-          this.timeline = response.data.data.data.timeline;
-          this.safeInfo = response.data.data.data.safeInfo;
-          this.routeInfo = response.data.data.data.routeInfo;
-        })
-        .catch(error => {
-          this.$message({
-            showClose: true,
-            message: 'sorry，获取订单详情失败',
-            type: 'error'
-          });
-        });
-    },
+    // getOrderDetail(orderID) {
+    //   getOrderDetail(orderID)
+    //     .then(response => {
+    //       this.driverInfo = response.data.data.data.driverInfo;
+    //       this.timeline = response.data.data.data.timeline;
+    //       this.safeInfo = response.data.data.data.safeInfo;
+    //       this.routeInfo = response.data.data.data.routeInfo;
+    //     })
+    //     .catch(error => {
+    //       this.$message({
+    //         showClose: true,
+    //         message: 'sorry，获取订单详情失败',
+    //         type: 'error'
+    //       });
+    //     });
+    // },
     /*************************/
     handleCurrentChange(val) {
       this.page = val;
@@ -203,6 +208,7 @@ export default {
       this.getOrderList(this.page, this.limit);
     },
     /*************************/
+    ...mapActions(['setVorderId'])
   },
   created(){
     this.getOrderList(this.page, this.limit);
@@ -226,7 +232,7 @@ export default {
   .pagination{
     margin-top: 6px;
     margin-right: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     .el-pagination{
       float:right;
     }

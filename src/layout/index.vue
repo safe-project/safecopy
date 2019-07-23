@@ -70,7 +70,7 @@ export default {
   }
   .middle-main-wrap{
     height: 100%;
-    padding-top: 50px;
+    padding-top: 60px;
     box-sizing: border-box;
   }
   .drawer-bg {

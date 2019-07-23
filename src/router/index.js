@@ -28,7 +28,28 @@ export const constantRoutes = [
       component: () => import('@/views/homepage/index'),
       meta: { title: '首页', icon: 'el-icon-document' }
     }]
-  }
+  },
+  //   {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/table',
+  //   name: 'Example',
+  //   meta: { title: 'Example', icon: 'el-icon-time' },
+  //   children: [
+  //     {
+  //       path: 'table',
+  //       name: 'Table',
+  //       component: () => import('@/views/table/index'),
+  //       meta: { title: 'Table', icon: 'el-icon-bell',roles: ['120'] }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       component: () => import('@/views/tree/index'),
+  //       meta: { title: 'Tree', icon: 'el-icon-service',roles: ['120'] }
+  //     }
+  //   ]
+  // }
 ]
 
 
@@ -36,6 +57,7 @@ export const asyncRoutes = [
 {
     path: '/riskorder',
     component: Layout,
+
     children: [
       {
         path: 'index',
@@ -48,24 +70,32 @@ export const asyncRoutes = [
   {
     path: '/historyorder',
     component: Layout,
+    redirect: '/historyorder/index',
     children: [
       {
         path: 'index',
         name: 'Historyorder',
         component: () => import('@/views/historyorder/index'),
         meta: { title: '历史订单查询', icon: 'el-icon-time',roles: ['130'] }
-      }
+      },
+      // {
+      //   path: 'detail',
+      //   name: 'Deatil',
+      //   component: () => import('@/views/detail/index'),
+      //   // hidden: true,
+      //   meta: { title: '订单详情', icon: 'el-icon-success',roles: ['130'] }
+      // }
     ]
   },
   {
-    path: '/test',
+    path: '/orderDetail',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Test',
-        component: () => import('@/views/test/index'),
-        meta: { title: '测试页面', icon: 'el-icon-success',roles: ['130'] }
+        name: 'Deatil',
+        component: () => import('@/views/detail/index'),
+        meta: { title: '订单详情', icon: 'el-icon-success',roles: ['130'] }
       }
     ]
   },

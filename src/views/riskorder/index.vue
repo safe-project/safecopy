@@ -9,6 +9,7 @@
     <el-table 
       :data="riskOrderListData" 
       highlight-current-row
+      height="510"
       border
       inline
       stripe
@@ -48,20 +49,11 @@
         :page-size="limit">
       </el-pagination>
     </div>
-    <orderDetailDialog 
-      :dialogVisible="dialogVisible" 
-      :DetailsPageActive="DetailsPageActive"
-      :driverInfo="driverInfo" 
-      :timeline="timeline" 
-      :safeInfo="safeInfo" 
-      :routeInfo="routeInfo" 
-      :orderID="orderID" 
-      @transfer="changeDialogVisible">
-    </orderDetailDialog>
   </div>
 </template>
 
 <script>
+import { mapState,mapGetters,mapActions } from 'vuex';
   import { getRiskOrderList} from '@/api/riskOrder'
   import { getOrderDetail} from '@/api/orderDetail'
   import orderDetailDialog from '@/views/orderDetail/index.vue';
@@ -81,11 +73,11 @@
         currentPage:1,
         total:0,
         page:1,
-        limit:10,
+        limit:20,
       }
     },
-    computed:{
-      
+    computed: {
+      ...mapState(['vorderId'])
     },
     props: {
       
@@ -119,11 +111,11 @@
       /*************************/
       // 查看订单详情按钮
       viewOrderDetail(scope){
-        this.dialogVisible = true;
         console.log(scope.row.orderID);
         this.orderID = scope.row.orderID;
         //获取订单详情
-        this.getOrderDetail(scope.row.orderID);
+        this.setVorderId(scope.row.orderID)
+        this.$router.push('/orderDetail/index');
       },
       // 详情dialog关闭的时候触发的操作
       changeDialogVisible(){
@@ -159,6 +151,7 @@
         this.getRiskOrderList(this.stateId,this.page, this.limit);
       },
       /*************************/
+      ...mapActions(['setVorderId'])
     },
     created(){
       this.getRiskOrderList(0,1,this.limit);
@@ -191,7 +184,7 @@
     .pagination{
       margin-top: 6px;
       margin-right: 20px;
-      margin-bottom: 50px;
+      margin-bottom: 10px;
       .el-pagination{
         float:right;
       }

@@ -56,6 +56,7 @@
     </el-row>
     <el-table 
       :data="historyOrderListData" 
+      height="360"
       highlight-current-row
       border
       inline
@@ -99,7 +100,7 @@
         :page-size="limit">
       </el-pagination>
     </div>
-    <orderDetailDialog 
+    <!-- <orderDetailDialog 
       :dialogVisible="dialogVisible" 
       :DetailsPageActive="DetailsPageActive"
       :driverInfo="driverInfo" 
@@ -108,7 +109,7 @@
       :routeInfo="routeInfo" 
       :orderID="orderID" 
       @transfer="changeDialogVisible">
-    </orderDetailDialog>
+    </orderDetailDialog> -->
   </div>
 </template>
 
@@ -116,6 +117,7 @@
   import { getHistoryOrderList} from '@/api/historyOrder'
   import { getOrderDetail} from '@/api/orderDetail'
   import orderDetailDialog from '@/views/orderDetail/index.vue';
+  import { mapState,mapGetters,mapActions } from 'vuex';
   export default {
     name: 'HistoryOrder',
     data(){
@@ -151,12 +153,12 @@
         currentPage:1,
         total:0,
         page:1,
-        limit:10,
+        limit:20,
         /*************************/
       }
     },
-    computed:{
-      
+    computed: {
+      ...mapState(['vorderId'])
     },
     props: {
       
@@ -185,6 +187,7 @@
           this.form.activeIdArr,
           1,
           this.limit);
+          // this.$router.push('/historyOrder/detail')
       },
       /*API：很多参数*/
       getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr,page,limit) {
@@ -204,11 +207,11 @@
       /*************************/
       // 查看订单详情按钮
       viewOrderDetail(scope){
-        this.dialogVisible = true;
+        // this.dialogVisible = true;
         console.log(scope.row.orderID);
         this.orderID = scope.row.orderID;
-        //获取订单详情
-        this.getOrderDetail(scope.row.orderID);
+        this.setVorderId(scope.row.orderID)
+        this.$router.push('/orderDetail/index');
       },
       // 详情dialog关闭的时候触发的操作
       changeDialogVisible(){
@@ -274,6 +277,7 @@
           this.limit);
       },
       /*************************/
+      ...mapActions(['setVorderId'])
     },
     created(){
       this.getHistoryOrderList(this.form.orderId,
@@ -331,7 +335,7 @@
     .pagination{
       margin-top: 6px;
       margin-right: 20px;
-      margin-bottom: 50px;
+      margin-bottom: 10px;
       .el-pagination{
         float:right;
       }

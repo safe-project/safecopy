@@ -5,7 +5,8 @@ import { resetRouter } from '@/router'
 const state = {
   token: getToken(),
   name: '',
-  roles: []
+  orderId1:'uhuhu',
+  roles: [],
 }
 
 const mutations = {
@@ -15,12 +16,23 @@ const mutations = {
   SET_NAME: (state, name) => {
     state.name = name
   },
+  SET_ORDERID1: (state, orderId1) => {
+    state.orderId1 = orderId1
+  },
   SET_ROLES: (state, roles) => {
     state.roles = roles
-  }
+  },
 }
 
 const actions = {
+  setOrderId1({ commit }, orderId1) {
+    return new Promise((resolve, reject) => {
+      commit('SET_ORDERID1', orderId1);
+      resolve()
+    }).catch(error=>{
+      reject('error')
+    })
+  },
   // user login
   login({ commit }, userInfo) {
     const { username, password } = userInfo
@@ -89,7 +101,10 @@ const actions = {
       removeToken()
       resolve()
     })
-  }
+  },
+
+  
+
 }
 
 export default {
