@@ -61,6 +61,7 @@
       border
       inline
       stripe
+      v-loading="loading"
       header-align="center" 
       style="width: 99%;" stripe
       :header-cell-style="getRowClass"
@@ -144,6 +145,7 @@
         ],
         historyOrderListData:[],
         dialogVisible:false,
+        loading:false,
         DetailsPageActive:1,
         driverInfo:{},
         timeline:[],
@@ -191,12 +193,16 @@
       },
       /*API：很多参数*/
       getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr,page,limit) {
+
+        this.loading = true;
         getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr)
           .then(response => {
+            this.loading = false;
             this.total = response.data.data.data.total;
             this.historyOrderListData = response.data.data.data.dataList;
           })
           .catch(error => {
+            this.loading = false;
             this.$message({
               showClose: true,
               message: 'sorry，获取历史订单列表失败',
