@@ -1,10 +1,13 @@
 <template>
   <div class="riskOrder">
     <el-row class="tabsButton">
-      <el-button type="default" size="small" @click.native="handleClick(0)">全部</el-button>
-      <el-button type="danger" size="small" @click.native="handleClick(1)">司机一键报警</el-button>
-      <el-button type="primary" size="small" @click.native="handleClick(3)">严重偏航</el-button>
-      <el-button type="warning" size="small" @click.native="handleClick(2)">乘客通知紧急联系人</el-button>
+      <el-button 
+        size="small" 
+        :class="item.isActive?'isActive':'isNormal'"
+        v-for="item in tabsButtonList" 
+        :key="item.id" 
+        :value="item.id" 
+        @click.native="handleClick(item.id)">{{item.label}}</el-button>
     </el-row>
     <el-table 
       :data="riskOrderListData" 
@@ -53,7 +56,7 @@
 </template>
 
 <script>
-import { mapState,mapGetters,mapActions } from 'vuex';
+  import { mapState,mapGetters,mapActions } from 'vuex';
   import { getRiskOrderList} from '@/api/riskOrder'
   import { getOrderDetail} from '@/api/orderDetail'
   import orderDetailDialog from '@/views/orderDetail/index.vue';
@@ -61,8 +64,27 @@ import { mapState,mapGetters,mapActions } from 'vuex';
     name: 'RiskOrder',
     data(){
       return {
+        tabsButtonList: [
+          {
+            id:'0',
+            isActive:false,
+            label:'全部'
+          },{
+            id:'1',
+            isActive:false,
+            label:'司机一键报警'
+          },{
+            id:'2',
+            isActive:false,
+            label:'严重偏航'
+          },{
+            id:'3',
+            isActive:false,
+            label:'乘客通知紧急联系人'
+          }
+        ],
         riskOrderListData:[],//数据
-        stateId:"",
+        stateId:"0",
         dialogVisible:false,
         DetailsPageActive:3,
         driverInfo:{},
@@ -104,7 +126,12 @@ import { mapState,mapGetters,mapActions } from 'vuex';
           });
       },
       handleClick(id) {
+        console.log(id);
         this.stateId = id;
+        this.tabsButtonList[id].isActive = true;
+        for (var i = 0; i < this.tabsButtonList.length; i++) {
+          this.tabsButtonList[i].isActive = (i == id)?true:false;
+        }
         this.getRiskOrderList(id,1,this.limit);
       },
 
@@ -168,7 +195,19 @@ import { mapState,mapGetters,mapActions } from 'vuex';
 <style lang="less">
   .riskOrder{
     .tabsButton{
-      margin: 20px 0;
+      margin-bottom: 15px;  
+      .el-button:focus, .el-button:hover{
+        color:#fff;
+        background-color:  #4278EF;
+      }
+      .isActive{
+        background: #4278EF;
+        color: white;
+      }
+    }
+    .el-button--text:focus, .el-button--text:hover{
+      color: #4278EF;
+      font-weight: bolder;
     }
     .el-table__header tr,.el-table__header th {
       padding: 0;
