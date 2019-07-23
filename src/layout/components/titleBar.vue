@@ -7,7 +7,7 @@
           <el-dropdown trigger="click">
           <span class="el-dropdown-link">
             <img src="../../assets/logo/fengche.png" class="nickNameImg">
-            <span :title="nickName" class="nickName">{{name}}</span>
+            <span :title="nickName" class="nickName">{{nickName}}</span>
             <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 1px;right:6px;font-size: 10px;"></i>
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:10px ">
@@ -24,7 +24,7 @@ import { mapGetters } from 'vuex';
         name: 'titleBar',
         data(){
             return {
-              nickName:'超级管理员',
+              nickName:'李鹏超级管理员',
                 
             }
         },
@@ -98,16 +98,16 @@ import { mapGetters } from 'vuex';
         height:100%;
         position: absolute;
         top:0px;
-        right:0px;
+        right:10px;
         cursor: pointer;
         .nickName{
           display: inline-block;
           font-size: 16px;
           color: #fff;
-          text-align: right;
+          text-align: left;
           margin-left: 20px;
           vertical-align: middle;
-          width: 80px;
+          width: 90px;
           height: 60px;
           line-height: 60px;
           white-space: nowrap;
@@ -119,7 +119,7 @@ import { mapGetters } from 'vuex';
           height: 30px;
           border-radius: 50%;
           position: absolute;
-          left: 24px;
+          left: -15px;
           top: 16px;
           animation:nickNameImg 4s linear 0s infinite;
         }
