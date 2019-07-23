@@ -16,6 +16,7 @@
       border
       inline
       stripe
+      v-loading="loading"
       header-align="center" 
       style="width: 99%;" stripe
       :header-cell-style="getRowClass"
@@ -86,6 +87,7 @@
         riskOrderListData:[],//数据
         stateId:"0",
         dialogVisible:false,
+        loading:false,
         DetailsPageActive:3,
         driverInfo:{},
         timeline:[],
@@ -112,12 +114,15 @@
         }
       },
       getRiskOrderList(id,page,limit) {
+        this.loading = true;
         getRiskOrderList(id,page,limit)
           .then(response => {
+            this.loading = false;
             this.total = response.data.data.data.total;
             this.riskOrderListData = response.data.data.data.dataList;
           })
           .catch(error => {
+            this.loading = false;
             this.$message({
               showClose: true,
               message: 'sorry，获取风险订单列表失败',
@@ -181,7 +186,8 @@
       ...mapActions(['setVorderId'])
     },
     created(){
-      this.getRiskOrderList(0,1,this.limit);
+      // this.getRiskOrderList(0,1,this.limit);
+      this.handleClick(0);
     },
     mounted(){
       

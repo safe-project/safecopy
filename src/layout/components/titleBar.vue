@@ -6,9 +6,8 @@
         <div class="right-menu clearfloat">
           <el-dropdown trigger="click">
           <span class="el-dropdown-link" >
-            <img src="../../assets/logo/fengche.png" class="nickNameImg" style="">
-            <span :title="nickName" class="nickName">{{nickName}}</span>
-            <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 1px;right:6px;font-size: 10px;"></i>
+            <span :title="nickName" class="nickName"><img src="../../assets/logo/fengche.png" class="nickNameImg" style="">{{name}}</span>
+            <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 1px;right:0px;font-size: 10px;"></i>
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:10px ">
             <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
@@ -94,7 +93,7 @@ import { mapGetters } from 'vuex';
         }
       }
       .right-menu {
-        width: 120px;
+        // width: 120px;
         height:100%;
         position: absolute;
         //background-color: blue;
@@ -107,7 +106,7 @@ import { mapGetters } from 'vuex';
           font-size: 16px;
           color: #fff;
           //border: 1px solid red;
-          width: 47px;
+          // width: 47px;
           //text-align: left;
           float: left;
           height: 60px;
@@ -123,6 +122,7 @@ import { mapGetters } from 'vuex';
           float: left;
           position: relative;
           top: 16px;
+          left: -2px;
           animation:nickNameImg 4s linear 0s infinite;
         }
         @keyframes nickNameImg{

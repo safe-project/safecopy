@@ -75,10 +75,6 @@
           width="140"
           align="center">
           <template slot-scope="scope">
-              <!-- <el-tooltip class="item" effect="dark" content="查看订单详情" placement="top">
-                  <el-button type="primary" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
-              </el-tooltip> -->
-
               <el-button type="text" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
           </template>
         </el-table-column>
@@ -148,12 +144,15 @@ export default {
       }
     },
     getOrderList(page,limit) {
+      this.loading = true;
       getOrderList(page,limit)
         .then(response => {
+          this.loading = false;
           this.total = response.data.data.data.total;
           this.orderListData = response.data.data.data.dataList;
         })
         .catch(error => {
+          this.loading = fasle;
           this.$message({
             showClose: true,
             message: 'sorry，获取订单列表失败',
