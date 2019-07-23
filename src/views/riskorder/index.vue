@@ -12,7 +12,7 @@
     <el-table 
       :data="riskOrderListData" 
       highlight-current-row
-      height="510"
+      :height="height"
       border
       inline
       stripe
@@ -98,6 +98,8 @@
         total:0,
         page:1,
         limit:20,
+        height:"",
+        clientHeight: document.documentElement.clientHeight
       }
     },
     computed: {
@@ -188,12 +190,31 @@
     created(){
       // this.getRiskOrderList(0,1,this.limit);
       this.handleClick(0);
+      this.height=document.documentElement.clientHeight-210;
     },
     mounted(){
-      
+      console.log("详情页created了");
+      const that = this
+      window.onresize = () => {
+        return (() => {
+          window.clientHeight = document.documentElement.clientHeight
+          that.clientHeight = window.clientHeight
+          this.height = that.clientHeight-210;
+        })()
+      }
     },
     watch: {
-      
+      clientHeight (val) {
+        if(!this.timer) {
+          this.clientHeight = val
+          this.timer = true
+          let that = this
+          setTimeout(function (){
+            that.timer = false
+          },400)
+          this.height = this.clientHeight-210;
+        }
+      }
     }
   }
 </script>

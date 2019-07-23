@@ -51,12 +51,12 @@
         </el-checkbox-group>
       </el-form-item>
     </el-form>
-    <el-row style="margin-left: 16px;margin-bottom: 20px;">
+    <el-row style="margin-left: 16px;margin-bottom: 20px;" class="btnRow">
       <el-button type="primary" size="small" @click.native="srearch">开始查询</el-button>
     </el-row>
     <el-table 
       :data="historyOrderListData" 
-      height="360"
+      :height="height"
       highlight-current-row
       border
       inline
@@ -156,6 +156,8 @@
         total:0,
         page:1,
         limit:20,
+        height:"",
+        clientHeight: document.documentElement.clientHeight
         /*************************/
       }
     },
@@ -286,6 +288,7 @@
       ...mapActions(['setVorderId'])
     },
     created(){
+      this.height=document.documentElement.clientHeight-390;
       this.getHistoryOrderList(this.form.orderId,
           this.form.driverPhone,
           this.form.driverId,
@@ -303,10 +306,28 @@
           this.limit);
     },
     mounted(){
-      
+      console.log("详情页created了");
+      const that = this
+      window.onresize = () => {
+        return (() => {
+          window.clientHeight = document.documentElement.clientHeight
+          that.clientHeight = window.clientHeight
+          this.height = that.clientHeight-390;
+        })()
+      }
     },
     watch: {
-      
+      clientHeight (val) {
+        if(!this.timer) {
+          this.clientHeight = val
+          this.timer = true
+          let that = this
+          setTimeout(function (){
+            that.timer = false
+          },400)
+          this.height = this.clientHeight-390;
+        }
+      }
     }
   }
 </script>
@@ -321,6 +342,12 @@
       }
       .endTime label{
         width: 81px;
+      }
+    }
+    .btnRow{
+      .el-button,.el-button:focus, .el-button:hover{
+        color:#fff;
+        background-color:  #4278EF;
       }
     }
     .el-form-item {
@@ -340,6 +367,10 @@
         padding: 0;
         height: 40px;
         font-size: 12px;
+    }
+    .el-button--text:focus, .el-button--text:hover{
+      color: #4278EF;
+      font-weight: bolder;
     }
     .pagination{
       margin-top: 6px;

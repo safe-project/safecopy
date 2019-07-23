@@ -1,13 +1,12 @@
 <template>
   <div class="orderDetail">
   
-    <el-row :gutter="20">{{clientHeight}}--{{offsetHeight}}
+    <el-row :gutter="20">
       <!-- 左侧订单信息 -->
       
-        <el-col :span="11" class="leftInfo">
-          <el-scrollbar style="height: 600px;">
+        <el-col :span="11" class="leftInfo" :style="height">
+          <el-scrollbar style="height: 100%;" ref="scrollBar">
             <div style="padding: 6px 0;background-color: #fff;">
-
               <div class="driverInfo public">
                 <div class="title"><strong>司机信息</strong></div>
                 <el-row>
@@ -73,8 +72,8 @@
               <div class="textarea public">
                 <el-input type="textarea" v-model="textarea"></el-input>
                 <el-row  type="flex" justify='center' style="margin-top: 10px;">
-                  <el-col :span="6"><el-button type="warning" size="small" @click.native.stop="riskDialogVisible = true">处理风险</el-button></el-col>
-                  <el-col :span="6"><el-button type="danger" size="small" @click="riskDialogVisible = true">解除风险</el-button></el-col>
+                  <el-col :span="6"><el-button type="primary" size="small" @click.native.stop="riskDialogVisible = true">处理风险</el-button></el-col>
+                  <el-col :span="6"><el-button type="primary" size="small" @click="riskDialogVisible = true">解除风险</el-button></el-col>
                 </el-row>
               </div>
               <div class="routeInfo public">
@@ -140,12 +139,12 @@
         center>
         <span style='font-size: 12px;'>处理风险需要将线下与乘人员沟通的结果填写到备注中，是否已沟通</span>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="riskDialogVisible = false" size="mini">否</el-button>
-          <el-button type="primary" @click="riskDialogVisible = false" size="mini">是</el-button>
+          <el-button type="primary" @click="riskDialogVisible = false" size="mini" style="background-color:  #4278EF;">否</el-button>
+          <el-button type="primary" @click="riskDialogVisible = false" size="mini" style="background-color:  #4278EF;">是</el-button>
         </span>
       </el-dialog>
-      <!-- 右侧地图 -->
-      <el-col :span="13" class="rightMap">
+      <!-- 右侧地图 可取消高度，由地图高度撑开-->
+      <el-col :span="12" class="rightMap" :style="height">
         <div class="grid-content bg-purple">
       
         </div>
@@ -167,6 +166,9 @@ import { getOrderDetail} from '@/api/orderDetail';
         timeline:{
           timelineActive:0,
           timelineSteps:[]
+        },
+        height:{
+          height:''
         },
         safeInfo:{},
         routeInfo:[],
@@ -207,10 +209,11 @@ import { getOrderDetail} from '@/api/orderDetail';
     },
     created(){
       console.log("详情页created了");
+      this.height.height=document.documentElement.clientHeight-130+'px';
       this.getOrderDetail(this.vorderId);
-      this.height = document.body.offsetHeight;
     },
     mounted(){
+      console.log("详情页created了");
       const that = this
       window.onresize = () => {
         return (() => {
@@ -218,6 +221,7 @@ import { getOrderDetail} from '@/api/orderDetail';
           window.offsetHeight = document.documentElement.offsetHeight
           that.clientHeight = window.clientHeight
           that.offsetHeight = window.offsetHeight
+          this.height.height = that.clientHeight-130 + 'px';
         })()
       }
     },
@@ -230,6 +234,7 @@ import { getOrderDetail} from '@/api/orderDetail';
           setTimeout(function (){
             that.timer = false
           },400)
+          this.height.height = this.clientHeight-130 + 'px';
         }
       },
       offsetHeight (val) {
@@ -240,6 +245,7 @@ import { getOrderDetail} from '@/api/orderDetail';
           setTimeout(function (){
             that.timer = false
           },400)
+          
         }
       }
     }
@@ -250,6 +256,24 @@ import { getOrderDetail} from '@/api/orderDetail';
 .orderDetail{
   .redSpan{
     color:#FF4C4C;
+  }
+  .textarea{
+    .el-button,.el-button:focus, .el-button:hover{
+      color:#fff;
+      background-color:  #4278EF;
+    }
+  }
+  .el-table {
+    .el-button--text:focus, .el-button--text:hover{
+      color: #4278EF;
+      font-weight: bolder;
+    }
+  }
+  .el-dialog{
+    .el-button{
+      color:#fff;
+      background-color:  #4278EF;
+    }
   }
   .el-row{
     margin-bottom: 10px;
@@ -379,5 +403,9 @@ import { getOrderDetail} from '@/api/orderDetail';
 .el-scrollbar__wrap {
    overflow-x: hidden;
  }
+ .rightMap{
+  padding: 6px 0;background-color: #fff;
+ }
+
 </style>
     

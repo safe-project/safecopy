@@ -9,7 +9,7 @@
         v-loading="loading"
         header-align="center" 
         highlight-current-row
-        height="590"
+        :height="height"
         style="width: 99%;"
         element-loading-text="拼命加载中"
         element-loading-spinner="el-icon-loading"
@@ -133,7 +133,9 @@ export default {
       currentPage:1,
       total:0,
       page:1,
-      limit:20
+      limit:20,
+      height:"",
+      clientHeight: document.documentElement.clientHeight
     }
   },
   components:{ orderDetailDialog },
@@ -211,6 +213,31 @@ export default {
   },
   created(){
     this.getOrderList(this.page, this.limit);
+    this.height=document.documentElement.clientHeight-160;
+  },
+  mounted(){
+      console.log("详情页created了");
+      const that = this
+      window.onresize = () => {
+        return (() => {
+          window.clientHeight = document.documentElement.clientHeight
+          that.clientHeight = window.clientHeight
+          this.height = that.clientHeight-160;
+        })()
+      }
+  },
+  watch: {
+    clientHeight (val) {
+      if(!this.timer) {
+        this.clientHeight = val
+        this.timer = true
+        let that = this
+        setTimeout(function (){
+          that.timer = false
+        },400)
+        this.height = this.clientHeight-160;
+      }
+    }
   }
 }
 </script>
