@@ -27,20 +27,20 @@
                   <el-col :span="24"><div><span>紧急联系人手机号：</span>{{driverInfo.emergencyPhone}}</div></el-col>
                 </el-row>
               </div>
-              <div class="timeline public" style="margin-bottom:0px">
+              <div class="timelineSteps public" style="margin-bottom:0px">
                 <div class="title"><strong>业务时间轴</strong></div>
                 <div style="width: 100%;  display: table;margin-top: 10px;">
                   <div class="DetailsPage-lt">
                     <div class="delate-time"
                       :style="{'top': `${index*(80)+4}px`}"
-                      v-for="(item, index) in timeline"
+                      v-for="(item, index) in timeline.timelineSteps"
                       :key="index"
                     >{{item.D_time}}</div>
                   </div>
                   <div class="DetailsPage-rt">
-                    <el-steps direction="vertical" :active="DetailsPageActive" :space="80">
+                    <el-steps direction="vertical" :active="timeline.timelineActive" :space="80">
                       <el-step
-                      v-for="(item, index) in timeline"
+                      v-for="(item, index) in timeline.timelineSteps"
                       :key="index"
                       :title="item.D_title"
                       :description="item.D_content==='null'?'':item.D_content"
@@ -164,10 +164,12 @@ import { getOrderDetail} from '@/api/orderDetail';
         textarea:"",
         riskDialogVisible:false,
         driverInfo:{},
-        timeline:[],
+        timeline:{
+          timelineActive:0,
+          timelineSteps:[]
+        },
         safeInfo:{},
         routeInfo:[],
-        DetailsPageActive:3,
         offsetHeight:document.documentElement.offsetHeight,
         clientHeight: document.documentElement.clientHeight
       }
@@ -190,6 +192,7 @@ import { getOrderDetail} from '@/api/orderDetail';
           .then(response => {
             this.driverInfo = response.data.data.data.driverInfo;
             this.timeline = response.data.data.data.timeline;
+            this.timeline.timelineActive = Number(response.data.data.data.timeline.timelineActive);
             this.safeInfo = response.data.data.data.safeInfo;
             this.routeInfo = response.data.data.data.routeInfo;
           })
