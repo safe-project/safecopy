@@ -3,10 +3,10 @@
         <div class="left-logo">
           <span class="title"><i class="logo"></i>如祺出行-安全管理平台</span>
         </div>
-        <div class="right-menu">
+        <div class="right-menu clearfloat">
           <el-dropdown trigger="click">
-          <span class="el-dropdown-link">
-            <img src="../../assets/logo/fengche.png" class="nickNameImg">
+          <span class="el-dropdown-link" >
+            <img src="../../assets/logo/fengche.png" class="nickNameImg" style="">
             <span :title="nickName" class="nickName">{{nickName}}</span>
             <i class="el-icon-arrow-down el-icon--right" style="position:relative;top: 1px;right:6px;font-size: 10px;"></i>
           </span>
@@ -24,7 +24,7 @@ import { mapGetters } from 'vuex';
         name: 'titleBar',
         data(){
             return {
-              nickName:'李鹏超级管理员',
+              nickName:'admin',
                 
             }
         },
@@ -94,20 +94,22 @@ import { mapGetters } from 'vuex';
         }
       }
       .right-menu {
-        width: 10%;
+        width: 120px;
         height:100%;
         position: absolute;
+        //background-color: blue;
         top:0px;
-        right:10px;
+        right:20px;
         cursor: pointer;
         .nickName{
           display: inline-block;
+          margin-left: 2px;
           font-size: 16px;
           color: #fff;
-          text-align: left;
-          margin-left: 20px;
-          vertical-align: middle;
-          width: 90px;
+          //border: 1px solid red;
+          width: 47px;
+          //text-align: left;
+          float: left;
           height: 60px;
           line-height: 60px;
           white-space: nowrap;
@@ -118,8 +120,8 @@ import { mapGetters } from 'vuex';
           width: 30px;
           height: 30px;
           border-radius: 50%;
-          position: absolute;
-          left: -15px;
+          float: left;
+          position: relative;
           top: 16px;
           animation:nickNameImg 4s linear 0s infinite;
         }

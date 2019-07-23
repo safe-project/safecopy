@@ -38,7 +38,7 @@
           placeholder="选择日期时间">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="结束时间:">
+      <el-form-item label="结束时间:" class="endTime">
         <el-date-picker
           v-model="form.endTime"
           type="datetime"
@@ -312,6 +312,9 @@
         height: 30px;
         line-height: 30px;
         margin-right: 10px;
+      }
+      .endTime label{
+        width: 81px;
       }
     }
     .el-form-item {

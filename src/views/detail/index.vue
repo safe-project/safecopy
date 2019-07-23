@@ -1,7 +1,7 @@
 <template>
   <div class="orderDetail">
   
-    <el-row :gutter="20">
+    <el-row :gutter="20">{{clientHeight}}--{{offsetHeight}}
       <!-- 左侧订单信息 -->
       
         <el-col :span="11" class="leftInfo">
@@ -167,7 +167,9 @@ import { getOrderDetail} from '@/api/orderDetail';
         timeline:[],
         safeInfo:{},
         routeInfo:[],
-        DetailsPageActive:3
+        DetailsPageActive:3,
+        offsetHeight:document.documentElement.offsetHeight,
+        clientHeight: document.documentElement.clientHeight
       }
     },
     computed: {
@@ -203,8 +205,40 @@ import { getOrderDetail} from '@/api/orderDetail';
     created(){
       console.log("详情页created了");
       this.getOrderDetail(this.vorderId);
+      this.height = document.body.offsetHeight;
+    },
+    mounted(){
+      const that = this
+      window.onresize = () => {
+        return (() => {
+          window.clientHeight = document.documentElement.clientHeight
+          window.offsetHeight = document.documentElement.offsetHeight
+          that.clientHeight = window.clientHeight
+          that.offsetHeight = window.offsetHeight
+        })()
+      }
     },
     watch: {
+      clientHeight (val) {
+        if(!this.timer) {
+          this.clientHeight = val
+          this.timer = true
+          let that = this
+          setTimeout(function (){
+            that.timer = false
+          },400)
+        }
+      },
+      offsetHeight (val) {
+        if(!this.timer) {
+          this.offsetHeight = val
+          this.timer = true
+          let that = this
+          setTimeout(function (){
+            that.timer = false
+          },400)
+        }
+      }
     }
   }
 </script>
