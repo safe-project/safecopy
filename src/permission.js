@@ -8,7 +8,7 @@ import { getToken } from '@/utils/auth' // get token from cookie
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login'] // no redirect whitelist
+const whiteList = ['/404'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
@@ -21,16 +21,21 @@ router.beforeEach(async(to, from, next) => {
   const hasToken = getToken()
 
   if (hasToken) {
-    if (to.path === '/login') {
-      // if is logged in, redirect to the home page
-      next({ path: '/' })
-      NProgress.done()
-    } else {
-      // determine whether the user has obtained his permission roles through getInfo
+    console.log('如果有token');
+    // if (to.path === '/login') {
+    //   // if is logged in, redirect to the home page
+    //   next({ path: '/' })
+    //   NProgress.done()
+    // } else {
+      
+    // }
+
+    // determine whether the user has obtained his permission roles through getInfo
       const hasRoles = store.getters.roles && store.getters.roles.length > 0
       if (hasRoles) {
         console.log('如果有权限');
         next()
+        NProgress.done()
       } else {
         try {
           console.log('如果没有权限');
@@ -38,10 +43,8 @@ router.beforeEach(async(to, from, next) => {
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
           await store.dispatch('user/getRoles').then(() => {
             console.log('获取权限成功',store.getters.roles);
-
-
           }).catch(()=>{
-            console.log('获取全选失败');
+            console.log('获取权限失败');
           })
 
           // generate accessible routes map based on roles
@@ -61,16 +64,16 @@ router.beforeEach(async(to, from, next) => {
           NProgress.done()
         }
       }
-    }
   } else {
     /* has no token*/
-
+    console.log('如果没有token');
     if (whiteList.indexOf(to.path) !== -1) {
       // in the free login whitelist, go directly
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`)
+      // next(`/login?redirect=${to.path}`)
+      Message.error('sorry，登录失败，没有token');
       NProgress.done()
     }
   }

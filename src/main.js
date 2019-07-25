@@ -13,6 +13,9 @@ import store from './store'
 import router from './router'
 
 import '@/permission' 
+import 'leaflet/dist/leaflet.css'
+import * as L from 'leaflet'
+Vue.L = Vue.prototype.$L = L
 
 
 Vue.use(ElementUI, { zhLocale})

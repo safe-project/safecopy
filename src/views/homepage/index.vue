@@ -110,7 +110,7 @@
 import { mapState,mapGetters,mapActions } from 'vuex';
 import { getOrderList} from '@/api/homepage';
 import { getOrderDetail} from '@/api/orderDetail';
-import orderDetailDialog from '@/views/orderDetail/index.vue';
+// import orderDetailDialog from '@/views/orderDetail/index.vue';
 export default {
   name: 'Homepage',
   computed: {
@@ -138,7 +138,7 @@ export default {
       clientHeight: document.documentElement.clientHeight
     }
   },
-  components:{ orderDetailDialog },
+  // components:{ orderDetailDialog },
   methods : {
     getRowClass({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0) {

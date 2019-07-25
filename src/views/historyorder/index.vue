@@ -117,7 +117,7 @@
 <script>
   import { getHistoryOrderList} from '@/api/historyOrder'
   import { getOrderDetail} from '@/api/orderDetail'
-  import orderDetailDialog from '@/views/orderDetail/index.vue';
+  // import orderDetailDialog from '@/views/orderDetail/index.vue';
   import { mapState,mapGetters,mapActions } from 'vuex';
   export default {
     name: 'HistoryOrder',
@@ -167,7 +167,7 @@
     props: {
       
     },
-    components:{ orderDetailDialog },
+    // components:{ orderDetailDialog },
     methods:{
       getRowClass({ row, column, rowIndex, columnIndex }) {
         if (rowIndex === 0) {

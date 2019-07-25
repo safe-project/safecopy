@@ -39,11 +39,11 @@ import { mapGetters } from 'vuex';
             
         },
         methods:{
-            async logout() {
-              console.log(222);
-		      await this.$store.dispatch('user/logout')
-		      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-		    }
+          async logout() {
+            console.log(222);
+		        await this.$store.dispatch('user/logout')
+		      // this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+		      }
         },
         created(){
             

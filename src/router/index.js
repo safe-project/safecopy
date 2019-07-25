@@ -7,11 +7,11 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 export const constantRoutes = [
-  {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('@/views/login/index'),
+  //   hidden: true
+  // },
 
   {
     path: '/404',
@@ -88,19 +88,19 @@ export const asyncRoutes = [
     ]
   },
   {
-    path: '/orderDetail',
+    path: '/orderdetail',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Deatil',
-        component: () => import('@/views/detail/index'),
+        name: 'orderDetail',
+        component: () => import('@/views/orderdetail/index'),
         meta: { title: '订单详情', icon: 'el-icon-success',roles: ['130'] }
       }
     ]
   },
 
-  // 404 page must be placed at the end !!!
+  
   { path: '*', redirect: '/404', hidden: true }
 ]
 

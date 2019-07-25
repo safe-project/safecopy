@@ -58,9 +58,8 @@
 
 <script>
   import { mapState,mapGetters,mapActions } from 'vuex';
-  import { getRiskOrderList} from '@/api/riskOrder'
-  import { getOrderDetail} from '@/api/orderDetail'
-  import orderDetailDialog from '@/views/orderDetail/index.vue';
+  import { getRiskOrderList} from '@/api/riskOrder';
+  import { getOrderDetail} from '@/api/orderDetail';
   export default {
     name: 'RiskOrder',
     data(){
@@ -105,10 +104,8 @@
     computed: {
       ...mapState(['vorderId'])
     },
-    props: {
-      
-    },
-    components:{ orderDetailDialog },
+    props: { },
+    components:{ },
     methods:{
       getRowClass({ row, column, rowIndex, columnIndex }) {
         if (rowIndex === 0) {
@@ -133,7 +130,6 @@
           });
       },
       handleClick(id) {
-        console.log(id);
         this.stateId = id;
         this.tabsButtonList[id].isActive = true;
         for (var i = 0; i < this.tabsButtonList.length; i++) {
@@ -188,7 +184,7 @@
       ...mapActions(['setVorderId'])
     },
     created(){
-      // this.getRiskOrderList(0,1,this.limit);
+      this.getRiskOrderList(0,1,this.limit);
       this.handleClick(0);
       this.height=document.documentElement.clientHeight-210;
     },
