@@ -206,7 +206,10 @@ export default {
     },
     handleSizeChange(val) {
       this.limit = val;
+      this.page = 1;
+      // this.currentPage = 1;
       this.getOrderList(this.page, this.limit);
+      //this.getOrderList(this.page, this.limit);
     },
     /*************************/
     ...mapActions(['setVorderId'])

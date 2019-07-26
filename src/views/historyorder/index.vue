@@ -197,7 +197,7 @@
       getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr,page,limit) {
 
         this.loading = true;
-        getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr)
+        getHistoryOrderList(orderId,driverPhone,driverId,driverIMEI,carNum,passengerPhone,passengerId,passengerIMEI,onAddress,offAddress,startTime,endTime,activeIdArr,page,limit)
           .then(response => {
             this.loading = false;
             this.total = response.data.data.data.total;

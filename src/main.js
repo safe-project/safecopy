@@ -1,24 +1,24 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' 
+import 'normalize.css/normalize.css'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import zhLocale  from 'element-ui/lib/locale/lang/zh-CN' 
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
-import '@/styles/index.scss' 
+import '@/styles/index.scss'
 import reset from '@/styles/reset.css'
 import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/permission' 
+import '@/permission'
 import 'leaflet/dist/leaflet.css'
 import * as L from 'leaflet'
 Vue.L = Vue.prototype.$L = L
 
 
-Vue.use(ElementUI, { zhLocale})
+Vue.use(ElementUI, { zhLocale })
 
 Vue.config.productionTip = false
 

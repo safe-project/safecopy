@@ -15,10 +15,9 @@ export function logout() {
 }
 
 
-export function getRoles(token) {
+export function getRoles() {
   return request({
     url: '/roles',
     method: 'get'
-    // params: { token }
   })
 }

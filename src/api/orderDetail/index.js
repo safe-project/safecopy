@@ -1,22 +1,30 @@
 import request from '@/utils/request'
 
-export function getOrderDetail() {
+export function getOrderDetail(orderID) {
   return request({
-    url: '/orderDetail/orderDetail',
+    url: `/orderDetail/orderDetail/?orderID=${orderID}`,
     method: 'get'
   })
 }
 
-export function dealRiskMessage() {
+export function dealRiskMessage(orderID,riskMessage) {
   return request({
     url: '/orderDetail/dealRiskMessage',
-    method: 'get'
+    method: 'post',
+    data:{
+      "orderID":orderID,
+      "riskMessage":riskMessage
+    }
   })
 }
 
-export function removeRiskMessage() {
+export function removeRiskMessage(orderID,riskMessage) {
   return request({
     url: '/orderDetail/removeRiskMessage',
-    method: 'get'
+    method: 'post',
+    data:{
+      "orderID":orderID,
+      "riskMessage":riskMessage
+    }
   })
 }

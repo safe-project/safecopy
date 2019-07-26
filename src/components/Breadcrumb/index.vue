@@ -1,15 +1,14 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator-class="el-icon-arrow-right">
     <!-- <transition-group name="breadcrumb"> -->
-        <el-breadcrumb-item>安全管理平台</el-breadcrumb-item>
-        <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
-          <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
-          <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
-        </el-breadcrumb-item>
+    <el-breadcrumb-item>安全管理平台</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
+      <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
+      <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+    </el-breadcrumb-item>
     <!-- </transition-group> -->
   </el-breadcrumb>
 </template>
-
 <script>
 import pathToRegexp from 'path-to-regexp'
 
@@ -49,7 +48,7 @@ export default {
       // }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
-      console.log(this.levelList,2222);
+      console.log(this.levelList, 2222);
     },
     isDashboard(route) {
       const name = route && route.name
@@ -74,8 +73,8 @@ export default {
     }
   }
 }
-</script>
 
+</script>
 <style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;
@@ -89,9 +88,10 @@ export default {
   }
 }
 
-.app-breadcrumb{
+.app-breadcrumb {
   background-color: #f3f5f9;
   color: #4D4D4D;
   font-size: 14px;
 }
+
 </style>

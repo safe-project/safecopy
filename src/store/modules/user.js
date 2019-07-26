@@ -4,6 +4,8 @@ import { resetRouter } from '@/router'
 import { Message } from 'element-ui'
 
 const state = {
+  // token: 'ceshi-token',
+  // 正式上线用下面这个，测试用上面这个，token写死
   token: getToken(),
   name: '',
   orderId1:'uhuhu',

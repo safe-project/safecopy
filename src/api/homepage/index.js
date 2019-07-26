@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function getOrderList() {
+export function getOrderList(page,limit) {
   return request({
-    url: '/homepage/orderList',
+    url: `/homepage/orderList/?page=${page}&limit=${limit}`,
     method: 'get'
   })
 }

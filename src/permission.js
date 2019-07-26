@@ -17,8 +17,9 @@ router.beforeEach(async(to, from, next) => {
   // set page title
   // document.title = getPageTitle(to.meta.title)
 
-  // determine whether the user has logged in
+  // determine whether the user has logged in 下面上线时打开
   const hasToken = getToken()
+  // const hasToken = 'ceshi-token'
 
   if (hasToken) {
     console.log('如果有token');
