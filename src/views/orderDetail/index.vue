@@ -494,7 +494,11 @@ import { getOrderDetail,dealRiskMessage,removeRiskMessage} from '@/api/orderDeta
  }
 
 .baojing{
-  color: #f56c6c;
+  color: #f56c6c!important;
+  .el-step__icon-inner{
+		color: #f56c6c!important;
+		background-color: #f56c6c!important;
+  }
   .el-step__title.is-wait{
     color: #f56c6c;
   }
@@ -504,6 +508,10 @@ import { getOrderDetail,dealRiskMessage,removeRiskMessage} from '@/api/orderDeta
 }
 .emergency{
   color: #e6a23c;
+  .el-step__icon-inner{
+		color: #e6a23c!important;
+		background-color: #e6a23c!important;
+  }
   .el-step__title.is-wait{
     color: #e6a23c;
   }
@@ -513,6 +521,10 @@ import { getOrderDetail,dealRiskMessage,removeRiskMessage} from '@/api/orderDeta
 }
 .pianhang{
   color: #409eff;
+  .el-step__icon-inner{
+		color: #409eff!important;
+		background-color: #409eff!important;
+  }
   .el-step__title.is-wait{
     color: #409eff;
   }

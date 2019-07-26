@@ -18,7 +18,7 @@
         <el-table-column
           prop="orderID"
           label="订单ID"
-          min-width="140"
+          min-width="80"
           align="center"
           show-overflow-tooltip>
         </el-table-column>
@@ -40,39 +40,45 @@
           label="司机电话" 
           prop="driverNum" 
           align="center" 
-          min-width="100"
+          min-width="80"
           show-overflow-tooltip>
           </el-table-column>
         <el-table-column 
           label="订单开始时间" 
           prop="startTime" 
           align="center" 
-          min-width="160"
+          min-width="100"
           show-overflow-tooltip>
         </el-table-column>
         <el-table-column 
         label="预警时间" 
         prop="warningTime" 
         align="center" 
-        min-width="160"
+        min-width="100"
         show-overflow-tooltip>
         </el-table-column>
         <el-table-column 
           label="预警原因" 
           prop="WarningReason" 
           align="center" 
-          min-width="160"
-          show-overflow-tooltip>
+          min-width="140"
+          >
           <template slot-scope="scope">
-            <el-tag
+            <!-- <el-tag
               :type="scope.row.WarningReason === '司机一键报警' ? 'danger' : scope.row.WarningReason === '严重偏航' ?'primary' : 'warning'"
               close-transition>{{scope.row.WarningReason}}
+            </el-tag> -->
+            <el-tag v-for="(item,index) in scope.row.WarningReason"
+              :key="item.type"
+              size="medium"
+              :type="item.type== 1 ? 'danger' : item.type== 2 ?'primary' : item.type== 3 ?'warning':''"
+              close-transition>{{item.reason}}
             </el-tag>
           </template>
         </el-table-column>
         <el-table-column
           label="订单详情"
-          width="140"
+          width="80"
           align="center">
           <template slot-scope="scope">
               <el-button type="text" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
@@ -135,7 +141,8 @@ export default {
       page:1,
       limit:20,
       height:"",
-      clientHeight: document.documentElement.clientHeight
+      clientHeight: document.documentElement.clientHeight,
+
     }
   },
   // components:{ orderDetailDialog },
@@ -154,7 +161,7 @@ export default {
           this.orderListData = response.data.data.data.dataList;
         })
         .catch(error => {
-          this.loading = fasle;
+          this.loading = false;
           this.$message({
             showClose: true,
             message: 'sorry，获取订单列表失败',
@@ -247,6 +254,11 @@ export default {
 
 <style lang="less">
 .homepage .orderList{
+	.el-tag{
+		margin-right: 6px;
+		margin-top: 6px;
+    margin-bottom: 4px;
+	}
   .el-table__header tr,.el-table__header th {
     padding: 0;
     height: 40px;

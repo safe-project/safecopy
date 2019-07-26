@@ -9,7 +9,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "司机一键报警",
+        "WarningReason": [{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 1
@@ -19,7 +19,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -29,7 +29,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -39,7 +39,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -49,7 +49,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -59,7 +59,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -69,7 +69,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -79,7 +79,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -89,7 +89,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -99,7 +99,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -109,7 +109,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -119,7 +119,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -129,7 +129,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -139,7 +139,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -149,7 +149,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -159,7 +159,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -169,7 +169,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -179,7 +179,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -189,7 +189,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -199,7 +199,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -209,7 +209,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -219,7 +219,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "严重偏航",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2
@@ -229,7 +229,7 @@
         "carNum": "粤AK4758",
         "driverName": "谢贾睿",
         "driverPhone": "13912348765",
-        "WarningReason": "乘客通知紧急联系人",
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}],
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
         "reasonType": 2

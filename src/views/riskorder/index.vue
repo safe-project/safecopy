@@ -29,10 +29,16 @@
       <el-table-column label="订单预警时间" prop="warningTime" align="center" min-width="160"></el-table-column>
       <el-table-column label="预警原因" prop="WarningReason" align="center" min-width="160">
         <template slot-scope="scope">
-          <el-tag
+          <!-- <el-tag
             :type="scope.row.WarningReason === '司机一键报警' ? 'danger' : scope.row.WarningReason === '严重偏航' ?'primary' : 'warning'"
-            close-transition>{{scope.row.WarningReason}}</el-tag>
-          </template>
+            close-transition>{{scope.row.WarningReason}}</el-tag> -->
+            <el-tag v-for="(item,index) in scope.row.WarningReason"
+              :key="item.type"
+              size="medium"
+              :type="item.type== 1 ? 'danger' : item.type== 2 ?'primary' : item.type== 3 ?'warning':''"
+              close-transition>{{item.reason}}
+            </el-tag>
+         </template>
       </el-table-column>
       <el-table-column label="订单详情" width="100">
         <template slot-scope="scope">
@@ -217,6 +223,11 @@
 
 <style lang="less">
   .riskOrder{
+  	.el-tag{
+			margin-right: 6px;
+			margin-top: 6px;
+    	margin-bottom: 4px;
+		}
     .tabsButton{
       margin-bottom: 15px;  
       .el-button:focus, .el-button:hover{

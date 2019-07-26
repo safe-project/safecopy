@@ -11,7 +11,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "司机一键报警"
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -20,7 +20,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -29,7 +29,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -38,7 +38,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -47,7 +47,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":2,"reason":"乘客偏航"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -56,7 +56,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -65,7 +65,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -74,7 +74,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"},{"type":2,"reason":"乘客偏航"},{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -83,7 +83,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason":[{"type":3,"reason":"乘客通知紧急联系人"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -92,7 +92,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -101,7 +101,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -110,7 +110,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -119,7 +119,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -128,7 +128,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -137,7 +137,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -146,7 +146,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -155,7 +155,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -164,7 +164,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -173,7 +173,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -182,7 +182,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -191,7 +191,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -200,7 +200,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -209,7 +209,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -218,7 +218,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -227,7 +227,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -236,7 +236,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -245,7 +245,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -254,7 +254,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -263,7 +263,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -272,7 +272,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -281,7 +281,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -290,7 +290,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -299,7 +299,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -308,7 +308,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -317,7 +317,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -326,7 +326,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -335,7 +335,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -344,7 +344,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -353,7 +353,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -362,7 +362,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -371,7 +371,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -380,7 +380,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "严重偏航"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       },
       {
         "orderID": "123421212342121234212",
@@ -389,7 +389,7 @@
         "driverNum": "13912348765",
         "startTime": "2019-07-15 19:00:00",
         "warningTime": "2019-07-15 19:30:00",
-        "WarningReason": "乘客通知紧急联系人"
+        "WarningReason": [{"type":1,"reason":"一键报警"}]
       }
     ]
 	}

@@ -66,23 +66,31 @@
       style="width: 99%;" stripe
       :header-cell-style="getRowClass"
       element-loading-text="拼命加载中">
-      <el-table-column label="订单ID" prop="orderID" align="center" min-width="120"></el-table-column>
+      <el-table-column label="订单ID" prop="orderID" align="center" min-width="80"></el-table-column>
       <el-table-column label="车牌号" prop="carNum" align="center" min-width="80"></el-table-column>
       <el-table-column label="司机姓名" prop="driverName" align="center" min-width="80"></el-table-column>
-      <el-table-column label="司机电话" prop="driverPhone" align="center" min-width="120"></el-table-column>
-      <el-table-column label="订单开始时间" prop="startTime" align="center" min-width="140"></el-table-column>
+      <el-table-column label="司机电话" prop="driverPhone" align="center" min-width="100"></el-table-column>
+      <el-table-column label="订单开始时间" prop="startTime" align="center" min-width="130"></el-table-column>
       <el-table-column label="预警时间" prop="warningTime" align="center" min-width="140"></el-table-column>
-      <el-table-column label="预警原因" prop="WarningReason" align="center" min-width="160">
+      <el-table-column label="预警原因" prop="WarningReason" align="center" min-width="200">
         <template slot-scope="scope">
-          <el-tag
+          <!-- <el-tag
             :type="scope.row.WarningReason === '司机一键报警' ? 'danger' : scope.row.WarningReason === '严重偏航' ?'primary' : 'warning'"
-            close-transition>{{scope.row.WarningReason}}</el-tag>
-          </template>
+            close-transition>{{scope.row.WarningReason}}</el-tag> -->
+					<el-tag v-for="(item,index) in scope.row.WarningReason"
+            :key="item.type"
+            size="medium"
+            :type="item.type== 1 ? 'danger' : item.type== 2 ?'primary' : item.type== 3 ?'warning':''"
+            close-transition>{{item.reason}}
+          </el-tag>
+
+        </template>
+          
       </el-table-column>
       <el-table-column label="上车地点" prop="onAddress" align="center" min-width="160" show-overflow-tooltip></el-table-column>
       <el-table-column label="下车地点" prop="offAddress" align="center" min-width="160" show-overflow-tooltip></el-table-column>
 
-      <el-table-column label="订单详情" width="100">
+      <el-table-column label="订单详情" width="80">
         <template slot-scope="scope">
           <el-button type="text" @click.stop="viewOrderDetail(scope)" round size="mini" style='cursor: pointer'>查看</el-button>
         </template>
@@ -333,6 +341,11 @@
 </script>
 <style lang="less">
   .historyOrder{
+  	.el-tag{
+			margin-right: 6px;
+			margin-top: 6px;
+    	margin-bottom: 4px;
+		}
     .el-form{
       .el-input .el-input__inner{
         width: 200px;
